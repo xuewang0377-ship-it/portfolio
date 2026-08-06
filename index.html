@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>王雪 · 作品集 | 电商供给侧的策略与工具</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --pink:#E8637A;--pink2:#F5A0B0;--pinkbg:#FDF4F6;--pinkline:#F7DCE3;
+  --pp:#8B7CD8;--pp2:#B3A8E8;--ppbg:#F5F2FC;--ppline:#E3DCF5;
+  --ink:#2C2C34;--ink2:#65656F;--ink3:#9B9BA6;
+  --line:#EDE8EB;--bg:#FCFBFC;
+  --sh:0 1px 2px rgba(139,124,216,.04),0 6px 18px rgba(232,99,122,.055);
+  --sh2:0 4px 14px rgba(139,124,216,.09),0 18px 44px rgba(232,99,122,.11);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1180px;margin:0 auto;padding:0 34px}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:300;padding:16px 0 13px;
+  background:rgba(252,251,252,.94);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+.navin{max-width:1180px;margin:0 auto;padding:0 34px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.navname{font-size:12.5px;font-weight:700;letter-spacing:1.4px;color:var(--ink3)}
+.navname b{color:var(--pink)}
+.tabs{display:flex;gap:4px;background:#fff;padding:5px;border-radius:100px;
+  border:1px solid var(--pinkline);box-shadow:var(--sh);flex-wrap:wrap;justify-content:center}
+.tab{padding:10px 21px;border-radius:100px;font-size:14px;font-weight:700;color:var(--ink2);
+  border:none;background:none;cursor:pointer;font-family:inherit;transition:.28s;white-space:nowrap}
+.tab:hover{color:var(--pink);background:var(--pinkbg)}
+.tab.on{background:linear-gradient(120deg,var(--pink),var(--pp));color:#fff;box-shadow:0 3px 11px rgba(232,99,122,.3)}
+@media(max-width:900px){.tab{padding:8px 13px;font-size:12px}}
+
+/* DECK */
+.deck{display:none;animation:fd .45s cubic-bezier(.16,1,.3,1)}
+.deck.on{display:block}
+@keyframes fd{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* PAGE —— 一页一屏的卡片 */
+.page{background:#fff;border:1px solid var(--line);border-radius:24px;padding:46px 48px 44px;
+  margin:26px 0;box-shadow:var(--sh);position:relative}
+.page:first-child{margin-top:30px}
+@media(max-width:760px){.page{padding:30px 22px;border-radius:18px}}
+.pnum{position:absolute;top:24px;right:30px;font-size:11px;font-weight:800;letter-spacing:1.6px;color:var(--ink3)}
+.phead{margin-bottom:26px;padding-right:60px}
+.ptag{display:inline-block;font-size:10.5px;letter-spacing:2.2px;font-weight:800;color:#fff;
+  padding:6px 14px;border-radius:7px;background:linear-gradient(120deg,var(--pink),var(--pp));margin-bottom:14px}
+.phead h2{font-size:clamp(24px,3.3vw,34px);font-weight:800;letter-spacing:-1px;line-height:1.28}
+.phead h2 em{font-style:normal;color:var(--pink)}
+.phead p{margin-top:11px;font-size:15.5px;color:var(--ink2);line-height:1.85;max-width:800px}
+
+/* insight */
+.insight{background:linear-gradient(112deg,var(--ppbg),#fff 70%);border:1px solid var(--ppline);
+  border-left:4px solid var(--pp);border-radius:0 14px 14px 0;padding:19px 26px}
+.insight u{text-decoration:none;font-size:10.5px;letter-spacing:2.2px;color:var(--pp);font-weight:800;
+  display:block;margin-bottom:7px}
+.insight p{font-size:16px;color:var(--ink);font-weight:650;line-height:1.8}
+.insight p b{color:var(--pink);font-weight:800}
+.insight.k{background:linear-gradient(112deg,var(--pinkbg),#fff 70%);border-color:var(--pinkline);border-left-color:var(--pink)}
+.insight.k u{color:var(--pink)}
+.insight.k p b{color:var(--pp)}
+
+/* grid */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.g23{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}
+@media(max-width:860px){.g2,.g3,.g4,.g23{grid-template-columns:1fr}}
+
+.card{background:#FDFCFD;border:1px solid var(--line);border-radius:16px;padding:24px 24px;transition:.3s}
+.card:hover{box-shadow:var(--sh);transform:translateY(-2px);background:#fff}
+.card h4{font-size:17px;font-weight:770;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.card h4 i{font-style:normal;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;
+  font-size:12px;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--pink),var(--pp));flex:none}
+.card p{font-size:14.5px;color:var(--ink2);line-height:1.85}
+.card p b,.card li b{color:var(--ink);font-weight:700}
+.card ul{list-style:none;display:grid;gap:8px}
+.card li{font-size:14.5px;color:var(--ink2);padding-left:18px;position:relative;line-height:1.8}
+.card li::before{content:'';position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--pink2)}
+
+/* KPI */
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+@media(max-width:860px){.kpi{grid-template-columns:repeat(2,1fr)}}
+.k{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 22px;
+  box-shadow:var(--sh);position:relative;overflow:hidden;transition:.32s}
+.k::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--pink),var(--pp))}
+.k:hover{transform:translateY(-4px);box-shadow:var(--sh2)}
+.k b{display:block;font-size:clamp(26px,3.4vw,36px);font-weight:800;letter-spacing:-1.4px;line-height:1.1;
+  background:linear-gradient(120deg,var(--pink),var(--pp));-webkit-background-clip:text;
+  background-clip:text;-webkit-text-fill-color:transparent}
+.k i{font-style:normal;font-size:12.5px;color:var(--ink3);display:block;margin-top:8px;font-weight:650}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:12px}
+.st{background:linear-gradient(158deg,var(--pinkbg),#fff);border:1px solid var(--pinkline);border-radius:13px;padding:18px 17px}
+.st.v{background:linear-gradient(158deg,var(--ppbg),#fff);border-color:var(--ppline)}
+.st b{display:block;font-size:24px;font-weight:800;letter-spacing:-1px;color:var(--pink);line-height:1.15}
+.st.v b{color:var(--pp)}
+.st i{font-style:normal;font-size:11.5px;color:var(--ink3);display:block;margin-top:6px;font-weight:600}
+
+/* table */
+.tb{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{padding:13px 16px;text-align:left;font-size:11px;letter-spacing:1.3px;color:var(--ink3);
+  font-weight:800;background:#FBF9FB;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:13px 16px;border-bottom:1px solid var(--line);color:var(--ink2);line-height:1.7}
+tr:last-child td{border-bottom:none}
+td b{color:var(--ink);font-weight:750}
+.hot{color:var(--pink);font-weight:800}
+.pill{display:inline-block;font-size:11px;font-weight:750;padding:3px 9px;border-radius:5px;white-space:nowrap}
+.pill.a{background:rgba(232,99,122,.13);color:var(--pink)}
+.pill.b{background:rgba(139,124,216,.13);color:var(--pp)}
+.pill.c{background:#F1F0F3;color:var(--ink3)}
+
+/* figure */
+figure.shot{border:1px solid var(--line);border-radius:15px;overflow:hidden;background:#fff;box-shadow:var(--sh)}
+figure.shot img{width:100%;display:block}
+figure.shot figcaption{padding:11px 17px;font-size:12px;color:var(--ink3);border-top:1px solid var(--line);
+  font-weight:650;line-height:1.55}
+
+/* steps */
+.steps{display:grid;gap:0}
+.stp{display:grid;grid-template-columns:48px 1fr;gap:16px;padding-bottom:20px;position:relative}
+.stp:last-child{padding-bottom:0}
+.stp:not(:last-child)::before{content:'';position:absolute;left:23px;top:46px;bottom:0;width:2px;
+  background:linear-gradient(180deg,var(--pinkline),var(--ppline))}
+.sdot{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:15px;
+  font-weight:800;color:#fff;background:linear-gradient(140deg,var(--pink),var(--pp));z-index:1;
+  box-shadow:0 4px 12px rgba(232,99,122,.24)}
+.stp:nth-child(2) .sdot{background:linear-gradient(140deg,#EA7288,#9C8FDD)}
+.stp:nth-child(3) .sdot{background:linear-gradient(140deg,#EE8195,#A99CE2)}
+.stp:nth-child(4) .sdot{background:linear-gradient(140deg,var(--pp),var(--pink))}
+.sbd h5{font-size:16px;font-weight:760;margin-bottom:6px;padding-top:8px}
+.sbd p{font-size:14.5px;color:var(--ink2);line-height:1.85}
+.sbd p b{color:var(--ink);font-weight:700}
+
+/* hflow */
+.hflow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:860px){.hflow{grid-template-columns:repeat(2,1fr)}}
+.hf{background:#FDFCFD;border:1px solid var(--line);border-radius:15px;padding:22px 19px;position:relative;transition:.3s}
+.hf:hover{transform:translateY(-4px);box-shadow:var(--sh);background:#fff}
+.hf u{text-decoration:none;font-size:10px;letter-spacing:1.5px;font-weight:800;color:var(--pp);
+  background:var(--ppbg);padding:3px 9px;border-radius:5px}
+.hf h5{margin-top:12px;font-size:15.5px;font-weight:760;line-height:1.4}
+.hf p{margin-top:7px;font-size:13px;color:var(--ink2);line-height:1.75}
+.hf::after{content:'→';position:absolute;right:-9px;top:50%;transform:translateY(-50%);
+  color:var(--pink2);font-size:15px;font-weight:800;z-index:2}
+.hf:last-child::after{display:none}
+@media(max-width:860px){.hf::after{display:none}}
+
+/* funnel */
+.fun{display:grid;gap:9px}
+.fr{display:flex;align-items:center;gap:15px;flex-wrap:wrap}
+.fb{height:44px;border-radius:10px;display:flex;align-items:center;padding:0 19px;
+  font-weight:770;font-size:14.5px;color:#fff;white-space:nowrap;background:linear-gradient(100deg,var(--pink),#EC8093)}
+.fr:nth-child(2) .fb{background:linear-gradient(100deg,#CE8CC4,var(--pp2))}
+.fr:nth-child(3) .fb{background:linear-gradient(100deg,var(--pp),#A294E0)}
+.fm{font-size:13.5px;color:var(--ink2)}
+.fm b{color:var(--ink);font-weight:750}
+
+/* ladder */
+.lad{display:grid;gap:11px}
+.lv{background:#FDFCFD;border:1px solid var(--line);border-radius:15px;padding:20px 24px;
+  display:grid;grid-template-columns:56px 1fr;gap:18px;align-items:center;transition:.3s}
+@media(max-width:660px){.lv{grid-template-columns:1fr;gap:10px}}
+.lv:hover{transform:translateX(6px);box-shadow:var(--sh);background:#fff}
+.lvn{text-align:center}
+.lvn u{text-decoration:none;font-size:9px;letter-spacing:1.3px;color:var(--ink3);font-weight:800;display:block}
+.lvn b{display:block;font-size:26px;font-weight:800;line-height:1.1;margin-top:2px}
+.lv1{border-left:4px solid #DCD7E0}.lv1 .lvn b{color:#C2BDC9}
+.lv2{border-left:4px solid var(--pp2)}.lv2 .lvn b{color:var(--pp2)}
+.lv3{border-left:4px solid var(--pp)}.lv3 .lvn b{color:var(--pp)}
+.lv4{border-left:4px solid var(--pink);background:linear-gradient(108deg,var(--pinkbg),#fff 55%)}
+.lv4 .lvn b{color:var(--pink)}
+.lvc h4{font-size:15.5px;font-weight:760;margin-bottom:4px}
+.lvc p{font-size:13.5px;color:var(--ink2);line-height:1.75}
+
+/* module list —— 工具模块说明 */
+.mods{display:grid;gap:10px}
+.mod{display:grid;grid-template-columns:170px 1fr;gap:18px;padding:15px 18px;background:#FDFCFD;
+  border:1px solid var(--line);border-radius:12px;transition:.28s}
+@media(max-width:700px){.mod{grid-template-columns:1fr;gap:6px}}
+.mod:hover{background:#fff;box-shadow:var(--sh)}
+.mod b{font-size:14.5px;font-weight:760;color:var(--ink);display:flex;align-items:center;gap:8px}
+.mod b::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--pink);flex:none}
+.mod span{font-size:13.5px;color:var(--ink2);line-height:1.8}
+.mod span em{font-style:normal;color:var(--pp);font-weight:700}
+
+/* vs */
+.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:stretch}
+@media(max-width:800px){.vs{grid-template-columns:1fr}}
+.vsx{display:grid;place-items:center;font-size:14px;font-weight:800;color:var(--ink3)}
+.vc{background:#FDFCFD;border:1px solid var(--line);border-radius:16px;padding:24px}
+.vc.a{border-top:3px solid var(--pink)}
+.vc.b{border-top:3px solid var(--pp)}
+.vc h5{font-size:16px;font-weight:780;margin-bottom:12px}
+.vc p{font-size:14px;color:var(--ink2);line-height:1.85}
+
+/* hero */
+.hero{padding:56px 0 20px;position:relative}
+.hero::before{content:'';position:absolute;top:-130px;right:-110px;width:470px;height:470px;border-radius:50%;
+  background:radial-gradient(circle,rgba(232,99,122,.12),transparent 66%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-160px;left:-140px;width:420px;height:420px;border-radius:50%;
+  background:radial-gradient(circle,rgba(139,124,216,.12),transparent 66%);pointer-events:none}
+.hero>*{position:relative;z-index:1}
+.badge{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;letter-spacing:2px;font-weight:800;
+  color:var(--pink);background:var(--pinkbg);border:1px solid var(--pinkline);
+  padding:7px 17px;border-radius:100px;margin-bottom:24px}
+.badge i{width:6px;height:6px;border-radius:50%;background:var(--pink);animation:pu 2.2s infinite}
+@keyframes pu{0%,100%{opacity:1}50%{opacity:.35}}
+h1{font-size:clamp(32px,5.3vw,56px);line-height:1.16;font-weight:800;letter-spacing:-2px}
+.grad{background:linear-gradient(100deg,var(--pink) 8%,var(--pp) 92%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hsub{margin-top:22px;font-size:16.5px;color:var(--ink2);max-width:680px;line-height:1.95}
+.hsub b{color:var(--ink);font-weight:700}
+.hmeta{margin-top:26px;display:flex;flex-wrap:wrap;gap:9px}
+.hmeta span{font-size:12.5px;color:var(--ink2);background:#fff;border:1px solid var(--line);
+  padding:7px 15px;border-radius:8px;font-weight:650}
+
+/* closing */
+.closing{background:linear-gradient(138deg,var(--pinkbg),#fff 45%,var(--ppbg));
+  border:1px solid var(--line);border-radius:20px;padding:38px 40px}
+@media(max-width:660px){.closing{padding:26px 20px}}
+.closing p{font-size:16px;color:var(--ink2);line-height:2;margin-bottom:16px}
+.closing p:last-child{margin-bottom:0}
+.closing b{color:var(--ink);font-weight:750}
+.gold{color:var(--pink);font-weight:800;font-size:16.5px}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.cc{background:#fff;border:1px solid var(--line);border-radius:13px;padding:17px 21px;
+  text-decoration:none;color:var(--ink);transition:.3s;box-shadow:var(--sh);display:block}
+.cc:hover{border-color:var(--pink2);transform:translateY(-3px);box-shadow:var(--sh2)}
+.cc u{text-decoration:none;font-size:10px;letter-spacing:1.5px;color:var(--ink3);font-weight:800;display:block}
+.cc b{font-size:14.5px;font-weight:750;display:block;margin-top:5px;word-break:break-all}
+
+.mt14{margin-top:14px}.mt18{margin-top:18px}.mt22{margin-top:22px}.mt26{margin-top:26px}
+footer{padding:30px 0 46px;text-align:center;color:var(--ink3);font-size:12px}
+.rv{opacity:0;transform:translateY(20px);transition:.7s cubic-bezier(.16,1,.3,1)}
+.rv.on{opacity:1;transform:none}
+@media print{.nav{position:static}.deck{display:block!important}.rv{opacity:1;transform:none}.page{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<div class="nav"><div class="navin">
+  <div class="navname">王雪 <b>·</b> 27 届复旦大学金融硕士 <b>·</b> 求职互联网商业化 / 电商策略</div>
+  <div class="tabs">
+    <button class="tab on" data-d="d0">开篇</button>
+    <button class="tab" data-d="d1">人 · 供给获取</button>
+    <button class="tab" data-d="d2">货 · 供给匹配</button>
+    <button class="tab" data-d="d3">场 · 量级放大</button>
+    <button class="tab" data-d="d4">AI 工具杠杆</button>
+    <button class="tab" data-d="d5">我的认知</button>
+  </div>
+</div></div>
+
+<!-- ==================== D0 ==================== -->
+<div class="deck on" id="d0"><div class="wrap">
+
+  <div class="hero rv">
+    <div class="badge"><i></i>PORTFOLIO 2026</div>
+    <h1>我做的是<span class="grad">电商供给侧经营</span><br>把判断变成标尺，把标尺变成工具</h1>
+    <p class="hsub">内容电商的增长，最终取决于<b>供给的质量与组织效率</b>。<br>
+    我的工作是用数据回答「找什么供给、给什么货、怎么放大量级」，<br>并把每一次判断沉淀成组织可复用的方法与产品。</p>
+    <div class="hmeta">
+      <span>复旦大学 · 金融硕士</span>
+      <span>小红书 · 电商供给运营</span>
+      <span>Shopee · 跨境策略中台</span>
+      <span>创新工场 · 行业研究</span>
+    </div>
+  </div>
+
+  <div class="kpi rv mt26">
+    <div class="k"><b>30+</b><i>主导直播全案与投放规划</i></div>
+    <div class="k"><b>5 套</b><i>从 0 搭建的判断模型</i></div>
+    <div class="k"><b>8 个</b><i>产品化工具 / 数据看板</i></div>
+    <div class="k"><b>3 类</b><i>沉淀为组织资产的方法论</i></div>
+  </div>
+
+  <div class="page rv">
+    <div class="pnum">01</div>
+    <div class="phead">
+      <span class="ptag">FRAMEWORK</span>
+      <h2>供给侧经营的三个问题，<em>和我的答案</em></h2>
+      <p>无论平台形态如何变化，供给侧经营都可以拆成三个递进的问题。每一层我都建立了判断标尺，并把标尺工具化。</p>
+    </div>
+    <div class="g3">
+      <div class="card"><h4><i>人</i>怎么找到对的供给</h4>
+        <p><b>问题</b>：谁能承接高客单品类的成交？</p>
+        <ul class="mt14">
+          <li>数学模型反推准入门槛</li>
+          <li>四通道并行的供给挖掘体系</li>
+          <li>六大分型定位货盘方向</li>
+        </ul></div>
+      <div class="card"><h4><i>货</i>怎么让供给卖得动</h4>
+        <p><b>问题</b>：什么品类能真正把钱赚到手？</p>
+        <ul class="mt14">
+          <li>行业三维 + 结算率双重验证</li>
+          <li>AB 实验实证替代主观判断</li>
+          <li>品类知识沉淀为备货指南</li>
+        </ul></div>
+      <div class="card"><h4><i>场</i>怎么把量级推上去</h4>
+        <p><b>问题</b>：冲击天花板靠什么结构支撑？</p>
+        <ul class="mt14">
+          <li>历史全量 + 对标反推目标结构</li>
+          <li>拆解货盘配比 / 蓄水盘 / 坑产密度</li>
+          <li>定位最可控的增长杠杆</li>
+        </ul></div>
+    </div>
+    <div class="insight mt22">
+      <u>贯穿三层的能力</u>
+      <p>三层的共同点是：<b>先把模糊的业务问题翻译成可被数据回答的问题</b>，再用工具把一次性的判断变成可重复调用的能力。</p>
+    </div>
+  </div>
+
+  <div class="page rv">
+    <div class="pnum">02</div>
+    <div class="phead">
+      <span class="ptag">METHOD</span>
+      <h2>我的工作方法：<em>四步闭环</em></h2>
+      <p>面对任何一个业务问题，我的处理路径是固定的。这套方法与行业无关，可迁移。</p>
+    </div>
+    <div class="hflow">
+      <div class="hf"><u>STEP 01</u><h5>翻译问题</h5><p>把「GMV 不够」翻译成「是人不对、货不对，还是场不对」——先定位，再动手</p></div>
+      <div class="hf"><u>STEP 02</u><h5>建立标尺</h5><p>用数据给出可量化依据，把主观经验变成可排序、可复核的标准</p></div>
+      <div class="hf"><u>STEP 03</u><h5>小步验证</h5><p>先做 AB 实验或小样本验证，确认逻辑成立，再放大资源投入</p></div>
+      <div class="hf"><u>STEP 04</u><h5>沉淀复用</h5><p>把判断过程变成下次可直接调用的模型、工具或知识资产</p></div>
+    </div>
+    <div class="g2 mt22">
+      <div class="card"><h4><i>?</i>为什么第 2 步最关键</h4>
+        <p>缺少标尺时，判断只能依赖个人经验，难以被检验。<br>
+        <b>建立标尺意味着：这个判断可以被复核，也可以被下一个人复用。</b></p></div>
+      <div class="card"><h4><i>!</i>为什么第 4 步决定上限</h4>
+        <p>一次判断只解决一个对象、一个场次。<br>
+        <b>沉淀成工具或指南，判断才能脱离个人、成为组织能力。</b></p></div>
+    </div>
+    <div class="insight k mt22">
+      <u>一句话概括</u>
+      <p>比完成单次任务更重要的，是<b>把「怎么做判断」沉淀为可复制的资产</b>。</p>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ==================== D1 人 ==================== -->
+<div class="deck" id="d1"><div class="wrap">
+
+  <div class="page rv">
+    <div class="pnum">人 02</div>
+    <div class="phead">
+      <span class="ptag">建立标尺</span>
+      <h2>没有现成工具时，<em>先建立判断标尺</em></h2>
+      <p>某财经类账号高客单大场单场破亿，路径被验证。需要在组内批量复制，但当时站内相似账号推荐功能尚未上线。</p>
+    </div>
+    <div class="g23">
+      <div>
+        <div class="insight k" style="margin-bottom:18px">
+          <u>我把问题翻译成</u>
+          <p>一个账号要做到千万级首场，其粉丝规模、电商属性、客单水平的<b>下限</b>分别是多少？</p>
+        </div>
+        <div class="steps">
+          <div class="stp"><div class="sdot">1</div><div class="sbd">
+            <h5>数学模型反推门槛</h5>
+            <p>目标 GMV ÷ 客单溢价倍数 ÷ 粉丝激活率（实测 50 个头部账号约 <b>3.4%</b>）<br>
+            → 硬性基准线：<b>30 天电商粉 ≥ 3 万 · 粉丝客单 ≥ 1000 元</b></p></div></div>
+          <div class="stp"><div class="sdot">2</div><div class="sbd">
+            <h5>五层漏斗叠加软性条件</h5>
+            <p>赛道匹配 → 内容调性 → 人设可信度 → 粉丝画像重合 → 商业化意愿</p></div></div>
+          <div class="stp"><div class="sdot">3</div><div class="sbd">
+            <h5>锁定目标 · @蘑菇妈妈</h5>
+            <p>118w 粉 / 电商粉 38.7w / 客单 1670 元 / <b>11 年基金从业背景</b><br>
+            「专业理财人推荐保值资产」——人设与品类的叙事逻辑天然自洽</p></div></div>
+        </div>
+      </div>
+      <figure class="shot"><img src="./assets/p04-funnel-logic.jpg" alt="五层漏斗筛选逻辑">
+        <figcaption>筛选逻辑 · 目标反推 → 画像圈层 → 双路取数输出候选池</figcaption></figure>
+    </div>
+    <div class="insight mt22">
+      <u>方法论价值</u>
+      <p>模型的意义不在于找到某一个人，而在于把「什么样的账号可能跑通」<b>变成一条可复核的基准线</b>，后续复用到同类赛道。</p>
+    </div>
+  </div>
+
+  <div class="page rv">
+    <div class="pnum">人 01</div>
+    <div class="phead">
+      <span class="ptag">供给获取</span>
+      <h2>供给获取：<em>从个案推荐到通道体系</em></h2>
+      <p>标尺解决的是「来了一个账号，能不能判断它行不行」；但供给从哪里来，本身也需要体系化。<br>单条通道产能有限，我把供给获取拆成四条并行通道。</p>
+    </div>
+    <div class="insight">
+      <u>核心判断</u>
+      <p>供给获取需要<b>多通道并行管理</b>——每条通道对应不同的供给池、建联成本与转化确定性。</p>
+    </div>
+    <div class="tb mt22"><table>
+      <tr><th>通道</th><th>供给来源</th><th>核心动作</th><th>定位</th><th>进展</th></tr>
+      <tr><td><b>新分型挖掘</b><br><span style="font-size:12.5px;color:#9B9BA6">二奢主理人</span></td>
+          <td>站内跨品类迁移</td><td>人群重合度 + 客单水平分析</td><td><span class="pill a">开拓增量分型</span></td><td>8-9 月 3 位首播</td></tr>
+      <tr><td><b>消费人群反查</b></td><td>存量高客单粉丝盘</td><td>已下单粉丝反查其关注账号</td><td><span class="pill a">精准度最高</span></td><td>命中 67 个候选</td></tr>
+      <tr><td><b>站外榜单匹配</b></td><td>竞对平台</td><td>榜单抓取 + 站内账号全量匹配</td><td><span class="pill b">覆盖面最广</span></td><td>已产品化看板</td></tr>
+      <tr><td><b>平台已有关系</b></td><td>官方合作名单</td><td>名单梳理 + 建联</td><td><span class="pill b">建联成本最低</span></td><td>建联中</td></tr>
+    </table></div>
+    <div class="g2 mt18">
+      <figure class="shot"><img src="./assets/chart-ershe.jpg" alt="新分型迁移判断链路">
+        <figcaption>通道一 · 新分型挖掘的筛选漏斗与四条判断依据</figcaption></figure>
+      <figure class="shot"><img src="./assets/chart-persona.jpg" alt="人群同源性验证">
+        <figcaption>通道一 · 人群同源性验证：年龄与策略人群结构高度重合</figcaption></figure>
+    </div>
+    <div class="g2 mt18">
+      <figure class="shot"><img src="./assets/chart-overlap.jpg" alt="消费人群反查取数逻辑">
+        <figcaption>通道二 · 反查取数逻辑：用真实成交行为反推可承接同一批消费力的账号</figcaption></figure>
+      <figure class="shot"><img src="./assets/chart-overlap-list.jpg" alt="反查候选名单产出">
+        <figcaption>通道二 · 产出名单：67 个候选中 53 个满足电商硬门槛（数据已脱敏）</figcaption></figure>
+    </div>
+    <figure class="shot mt18"><img src="./assets/dy-board.jpg" alt="站外榜单匹配看板">
+      <figcaption>通道三 · 站外榜单匹配看板：3,449 站外达人 → 620 站内匹配 → 49 核心攻坚池</figcaption></figure>
+  </div>
+
+  <div class="page rv">
+    <div class="pnum">人 03</div>
+    <div class="phead">
+      <span class="ptag">货盘与内容</span>
+      <h2>匹配货盘与内容：<em>让供给真正跑通</em></h2>
+      <p>货盘怎么定？内容怎么写？这两个问题我同样用数据给了答案，并沉淀成可复用框架。</p>
+    </div>
+    <div class="g2">
+      <div class="card"><h4><i>A</i>六大分型 · 定位货盘方向</h4>
+        <div class="tb mt14"><table>
+          <tr><th>分型</th><th>推荐货盘</th></tr>
+          <tr><td>明星 / 名人</td><td>高端珠宝 + 轻奢黄金</td></tr>
+          <tr style="background:var(--pinkbg)"><td><b>财经类</b></td><td class="hot">黄金金条 + 和田玉</td></tr>
+          <tr><td>时尚穿搭</td><td>新中式首饰 + 珍珠</td></tr>
+          <tr><td>主持人</td><td>翡翠玉石 + 高端珍珠</td></tr>
+          <tr><td>文化 / 收藏</td><td>文玩手串 + 文化属性珠宝</td></tr>
+          <tr><td>品牌主理人</td><td>自有品牌 + 设计师款</td></tr>
+        </table></div>
+        <p class="mt14"><b>结论</b>：货盘聚焦单品类 + 蓄水冲刺，是首场最高 ROI 的动作组合</p></div>
+      <div class="card"><h4><i>B</i>8 维招商评分模型 · 锁定商家</h4>
+        <p>三类商家池 × 8 大指标，<b>Min-Max 标准化后加权计分</b>，输出 0-100 分排序。</p>
+        <ul class="mt14">
+          <li>店播 GPM · 近 30 天店播 DGMV · 达人渠道 DGMV</li>
+          <li>笔单价 · 店播 CTR · 直播曝光</li>
+          <li>内容 DGMV · 近 30 天广告 DGMV</li>
+        </ul>
+        <p class="mt14">把「哪家商家值得优先建联」<b>从主观判断变成可排序的决策依据</b></p></div>
+    </div>
+    <div class="g2 mt18">
+      <figure class="shot"><img src="./assets/p07-score-model.jpg" alt="8维招商评分模型">
+        <figcaption>8 维评分模型 · 多指标标准化后加权排序输出商家优先级</figcaption></figure>
+      <figure class="shot"><img src="./assets/p09-note-formula.jpg" alt="内容规律分析">
+        <figcaption>内容公式 · 8196 条高蓄水内容 → 213 条有效样本 → 6 类内容套路</figcaption></figure>
+    </div>
+    <div class="insight k mt22">
+      <u>内容公式结论</u>
+      <p><b>紧迫感 + 价格锚点</b> / <b>规模感 + 稀缺性</b> 是转化效率最高的内容模式；视频形态贡献 <b>62%</b> 蓄水量，预热期应优先投视频。</p>
+    </div>
+  </div>
+
+  <div class="page rv">
+    <div class="pnum">人 04</div>
+    <div class="phead">
+      <span class="ptag">结果验证</span>
+      <h2>结果验证：<em>打法跑通并完成复制</em></h2>
+      <p>模型有效性由结果检验；方法论是否成立，取决于它能否在第二个对象上重现。</p>
+    </div>
+    <div class="g2">
+      <div class="tb"><table>
+        <tr><th></th><th>首场</th><th>第二场 · All in 单品类</th></tr>
+        <tr><td><b>GMV</b></td><td><b class="hot">2,617 万</b></td><td><b class="hot">3,059 万</b></td></tr>
+        <tr><td><b>GPM</b></td><td>11,530</td><td><b class="hot">15,606 · +35%</b></td></tr>
+        <tr><td><b>蓄水用户贡献</b></td><td>GMV 占比 <b>82.3%</b></td><td>验证单品类聚焦判断</td></tr>
+        <tr><td><b>客单价</b></td><td>11,227 元</td><td>—</td></tr>
+      </table></div>
+      <div>
+        <div class="stats">
+          <div class="st"><b>100 万+</b><i>复制验证 · 另一同类账号首场</i></div>
+          <div class="st v"><b>2,507</b><i>复制场次 GPM</i></div>
+        </div>
+        <div class="card mt14"><h4><i>✓</i>链路闭环</h4>
+          <p><b>数据漏斗找人 → 分型框架定货盘 → 蓄水数据反推内容 → 打法复制</b><br>
+          底层是「人设 × 货盘 × 内容 × 粉丝决策力」的四重匹配。</p></div>
+      </div>
+    </div>
+    <div class="g2 mt18">
+      <figure class="shot"><img src="./assets/p10-mogu-s1.jpg" alt="首场战报">
+        <figcaption>首场战报 · GMV 2,617 万，蓄水用户贡献 82.3%</figcaption></figure>
+      <figure class="shot"><img src="./assets/p11-mogu-s2.jpg" alt="第二场战报">
+        <figcaption>第二场战报 · All in 单品类，GPM 提升 35%</figcaption></figure>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ==================== D2 货 ==================== -->
+<div class="deck" id="d2"><div class="wrap">
+
+  <div class="page rv">
+    <div class="pnum">货 01</div>
+    <div class="phead">
+      <span class="ptag">品类判断</span>
+      <h2>成交 <em>≠</em> 收入</h2>
+      <p>头部账号要从多品类转向单品类深耕，品类选错意味着货盘、招商、内容全部推倒重来。</p>
+    </div>
+    <div class="insight k">
+      <u>我把问题翻译成</u>
+      <p>什么样的品类，能同时满足：大盘有量、趋势向上、货源成熟，且——<b>钱能真正落袋</b>？</p>
+    </div>
+    <div class="hflow mt22">
+      <div class="hf"><u>ROUND 01</u><h5>行业三维筛选</h5><p>从体量、增速、集中度扫描候选品类，锁定方向</p></div>
+      <div class="hf"><u>ROUND 02</u><h5>结算率四维深挖</h5><p>行业 / 达人 / SKU / 商家，验证钱能否真正落袋</p></div>
+      <div class="hf"><u>ROUND 03</u><h5>AB 实验实证</h5><p>用两场真实大场做对照，让数据给出最终答案</p></div>
+      <div class="hf"><u>OUTPUT</u><h5>沉淀品类资产</h5><p>把结论做成备货指南，任何人可直接取用</p></div>
+    </div>
+    <figure class="shot mt22"><img src="./assets/chart-industry.jpg" alt="行业 DGMV 分析">
+      <figcaption>行业三维分析 · 各子品类的体量、趋势与集中度对比（体量已指数化）</figcaption></figure>
+    <div class="tb mt18"><table>
+      <tr><th>品类</th><th>近一年 DGMV</th><th>集中度</th><th>判断</th></tr>
+      <tr style="background:var(--pinkbg)"><td><b>和田玉</b></td><td><b class="hot">5.28 亿</b> · 全品类最大</td><td>60.3% 头部稳定</td><td><span class="pill a">✓ 主力押注</span></td></tr>
+      <tr><td><b>绿松石</b></td><td>增速最快，体量偏小</td><td>分散，供应链成长期</td><td><span class="pill b">可试，不宜主押</span></td></tr>
+      <tr><td><b>珍珠 / 翡翠</b></td><td>体量稳定</td><td>较集中</td><td><span class="pill c">备选</span></td></tr>
+    </table></div>
+  </div>
+
+  <div class="page rv">
+    <div class="pnum">货 02</div>
+    <div class="phead">
+      <span class="ptag">关键一轮</span>
+      <h2>结算率四维拆解：<em>看不见的指标才决定生意</em></h2>
+      <p>只看 GMV 趋势不够。高客单非标品退款率普遍偏高，爆量后若结算率不达标，实际收益会大打折扣。</p>
+    </div>
+    <div class="g23">
+      <div>
+        <div class="tb"><table>
+          <tr><th>验证对象</th><th>结论</th></tr>
+          <tr style="background:var(--pinkbg)"><td><b>和田玉</b></td><td>高结算 SKU 集中在 <b>500-5000 元</b>中高客单，商家多具备<b>产地直供</b>能力 → <span class="pill a">验证首选可行</span></td></tr>
+          <tr><td><b>高结算场次共性</b></td><td>话术为<b>溯源背书 + 产品故事 + 限量稀缺</b>，与账号人设契合</td></tr>
+          <tr><td><b>绿松石</b></td><td>高结算 SKU 分散，供应链成熟度不足 → <span class="pill c">印证不宜主押</span></td></tr>
+        </table></div>
+        <div class="card mt18"><h4><i>→</i>三条落地应用</h4>
+          <ul>
+            <li>结合爆品特征<b>推货盘</b></li>
+            <li>结合高结算场次提取可复用 <b>highlight 动作</b></li>
+            <li>结合高结算商家<b>探究好货来源</b></li>
+          </ul></div>
+      </div>
+      <figure class="shot"><img src="./assets/p13-settle-4dim.jpg" alt="结算率四维拆解">
+        <figcaption>结算率四维拆解 · 行业 / 达人 / SKU / 商家</figcaption></figure>
+    </div>
+    <div class="insight mt22">
+      <u>这一轮为什么最重要</u>
+      <p>如果只看 GMV，被淘汰的那个品类也是两千多万的「成绩」。<br><b>真正决定生意成立与否的，是那些不出现在战报上的指标。</b></p>
+    </div>
+  </div>
+
+  <div class="page rv">
+    <div class="pnum">货 04</div>
+    <div class="phead">
+      <span class="ptag">资产沉淀</span>
+      <h2>沉淀：<em>从单场选品到可复用的货盘资产</em></h2>
+      <p>单次分析只服务一个对象、一个场次。做成按品类沉淀的指南，任何人、任何时间进入该品类都可直接取用。</p>
+    </div>
+    <div class="stats">
+      <div class="st"><b>104</b><i>覆盖相关主播</i></div>
+      <div class="st"><b>529</b><i>覆盖相关场次</i></div>
+      <div class="st v"><b>1000</b><i>爆款商品样本</i></div>
+      <div class="st v"><b>3</b><i>已沉淀品类</i></div>
+    </div>
+    <div class="mods mt18">
+      <div class="mod"><b>市场盘点</b><span>该品类的主播数、场次数与场次分档（专场 / 主打 / 混播）<em>→ 判断品类成熟度与竞争格局</em></span></div>
+      <div class="mod"><b>内容公式</b><span>高蓄水内容的套路分类及各套路命中率，含无效类型黑名单<em>→ 直接指导预热内容选题</em></span></div>
+      <div class="mod"><b>选品分档</b><span>按产地 / 等级的件均价带：福利品 / 入门价 / 高货价<em>→ 定货盘价格结构</em></span></div>
+      <div class="mod"><b>器型分布</b><span>手串 / 镯 / 项链 / 吊坠等款数占比<em>→ 定 SKU 结构与坡度</em></span></div>
+      <div class="mod"><b>搭配建议</b><span>DIY 配石搭子组合（金属 / 蜜蜡 / 南红等）<em>→ 拓展连带与组合款</em></span></div>
+      <div class="mod"><b>命名公式</b><span>【名人专属】+ 产地等级 + 材质拼接 + 器型规格<em>→ 商品标题可直接套用</em></span></div>
+    </div>
+    <div class="g2 mt18">
+      <figure class="shot"><img src="./assets/g-hetian-1.jpg" alt="备货指南市场盘点">
+        <figcaption>指南模块一 · 市场盘点与内容套路命中率</figcaption></figure>
+      <figure class="shot"><img src="./assets/g-hetian-2.jpg" alt="备货指南选品分档">
+        <figcaption>指南模块二 · 价格带分档 / 器型分布 / 搭配建议 / 命名公式</figcaption></figure>
+    </div>
+
+    <div class="insight k mt26">
+      <u>第三层沉淀 · 从「选品类」到「选商家」</u>
+      <p>品类选对之后还有一个问题：<b>这个品类里，哪些商家的货盘是可撬动的</b>？<br>
+      我搭建了商家雷达看板，按主营品类扫描站内商家盘子与达人渠道渗透率，识别「盘子大但尚未被撬动」的洼地商家。</p>
+    </div>
+    <div class="g3 mt18">
+      <div class="card"><h4><i>1</i>看什么</h4>
+        <p>各品类的商家总数、商家数渗透率、GMV 渗透率，以及单个商家的盘子规模与达人渠道占比。</p></div>
+      <div class="card"><h4><i>2</i>怎么判断</h4>
+        <p>按渗透状态分四档：<b>未合作 / 洼地 / 待深耕 / 成熟</b>。盘子大且渗透低 = 优先建联目标。</p></div>
+      <div class="card"><h4><i>3</i>用在哪</h4>
+        <p>新场次筹备时，直接按品类调出可撬动商家清单，替代逐个人工排查。</p></div>
+    </div>
+    <figure class="shot mt18"><img src="./assets/chart-radar.jpg" alt="珠宝文玩商家雷达看板">
+      <figcaption>商家雷达看板 · 按主营品类看商家盘子与达人渠道渗透，识别可撬动的货盘洼地（金额已指数化）</figcaption></figure>
+  </div>
+
+  <div class="page rv">
+    <div class="pnum">货 03</div>
+    <div class="phead">
+      <span class="ptag">案例 · 实证</span>
+      <h2>案例：<em>用 AB 实验验证这套方法</em></h2>
+      <p>以上判断框架与货盘资产，最终要回到一场真实生意里检验。<br>不靠推演，直接用两场真实大场做对照实验。</p>
+    </div>
+    <div class="tb"><table>
+      <tr><th>指标</th><th>和田玉专场</th><th>绿松石专场</th></tr>
+      <tr><td><b>场观人数</b></td><td><b class="hot">371,678</b></td><td>265,235</td></tr>
+      <tr><td><b>支付金额</b></td><td><b class="hot">7,300 万</b></td><td>2,452 万</td></tr>
+      <tr><td><b>GPM</b></td><td><b class="hot">8,784.9</b></td><td>6,252.1</td></tr>
+      <tr><td><b>退款率</b></td><td>76.4%</td><td><b style="color:#C0392B">89%</b></td></tr>
+      <tr><td><b>最终结果</b></td><td><span class="pill a">加返场破亿 ✓</span></td><td><span class="pill c">未能放量</span></td></tr>
+    </table></div>
+    <div class="g2 mt18">
+      <figure class="shot"><img src="./assets/p17-ab-result.jpg" alt="和田玉专场战报">
+        <figcaption>和田玉专场战报 · 单场 7,300 万，加返场破亿</figcaption></figure>
+      <div class="card"><h4><i>✓</i>三轮一致</h4>
+        <p>行业趋势分析 → 结算率验证 → 实战结果，三轮数据全部指向同一结论。该品类成为长期主赛道。</p>
+        <p class="mt14"><b>这套思路可迁移到任何赛道的选品决策</b>——它本质是「先看大盘、再看质量、最后小步实证」的通用决策流程。</p></div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ==================== D3 场 ==================== -->
+<div class="deck" id="d3"><div class="wrap">
+
+  <div class="page rv">
+    <div class="pnum">场 01</div>
+    <div class="phead">
+      <span class="ptag">量级放大</span>
+      <h2>冲击历史天花板，<em>靠什么结构支撑</em></h2>
+      <p>选对品类解决的是「卖什么」。当头部达人 <b>Winnie Tang</b> 要冲击单场历史新高时，需要回答的是「靠什么结构支撑这个量级」——我搭建了一套全量数据底盘来回答它。</p>
+    </div>
+    <div class="kpi">
+      <div class="k"><b>316</b><i>历史全期实收指数 · 44 个大场</i></div>
+      <div class="k"><b>86</b><i>历史单场天花板指数</i></div>
+      <div class="k"><b>109</b><i>站内对标最高场指数</i></div>
+      <div class="k"><b>+27%</b><i>距目标的差距</i></div>
+    </div>
+    <p style="margin-top:12px;font-size:13px;color:var(--ink3)">* 为对外展示需要，金额已指数化处理：以本次目标 GMV = 100 为基准</p>
+    <div class="insight k mt22">
+      <u>关键判断</u>
+      <p><b>+27% 不是量级差距</b>——历史天花板已接近目标区间，问题不在于「能不能」，而在于<b>用什么结构去补这 27%</b>。</p>
+    </div>
+    <figure class="shot mt18"><img src="./assets/chart-scene-board.jpg" alt="单场目标规划全量数据底盘">
+      <figcaption>数据底盘结构 · 四个板块递进：把自己看透 → 把对标看透 → 提炼结构差距 → 给出可执行方案</figcaption></figure>
+    <figure class="shot mt18"><img src="./assets/chart-scene.jpg" alt="目标差距定位">
+      <figcaption>目标差距定位 · 历史全量与对标场次的指数化对比，以及达成目标所需的三个结构条件</figcaption></figure>
+  </div>
+
+  <div class="page rv">
+    <div class="pnum">场 02</div>
+    <div class="phead">
+      <span class="ptag">结构拆解</span>
+      <h2>六条结构性发现，<em>指向同一个杠杆</em></h2>
+      <p>拉取历史全量场次与站内对标场次，反推达成目标所需的货盘结构、蓄水盘与坑产分布。</p>
+    </div>
+    <div class="tb"><table>
+      <tr><th>分析维度</th><th>关键发现</th></tr>
+      <tr><td><b>大场脉冲模型</b></td><td>44 个大场中 <b>18 个中大场贡献 94%</b>，小场对大盘几乎无贡献 → 资源应集中于大场</td></tr>
+      <tr><td><b>客单价是核心变量</b></td><td>最高场客单与支付人数双高；低产出场客单低约 40%、人数不足其 1/10</td></tr>
+      <tr style="background:var(--pinkbg)"><td><b>可复制货盘结构</b></td><td>所有高产出大场均为「玉石 40~49% + 黄金彩宝 30~38% + 定制 12~20%」<b>三段式配比</b></td></tr>
+      <tr><td><b>坑产结构</b></td><td>天花板场中 <b>35 个百万级 SKU 贡献 40.5%</b>，280 个十万级 SKU 贡献 87.8% → 头部 SKU 决定量级</td></tr>
+      <tr style="background:var(--ppbg)"><td><b>蓄水是最直接杠杆</b></td><td>蓄水人数与 GMV 强正相关，单人产出均值约 <b>3,000 元</b>；该账号蓄水→购买转化在对标中最优</td></tr>
+      <tr><td><b>筹备周期</b></td><td>月度呈脉冲，大场之间需 <b>4~6 周</b>货盘筹备周期</td></tr>
+    </table></div>
+    <figure class="shot mt18"><img src="./assets/winnie-insight.jpg" alt="蓄水盘洞察结论">
+      <figcaption>蓄水盘洞察 · 蓄水规模与 GMV 强正相关，单人产出反映货盘承接力</figcaption></figure>
+    <div class="insight mt22">
+      <u>规划结论</u>
+      <p>目标达成不是靠单点发力，而是<b>三段式货盘结构 × 蓄水规模 × 头部坑产密度</b>三者同时到位。<br>
+      其中<b>蓄水盘是最可控的杠杆</b>——转化效率已被验证为最优，只要把蓄水人数推上去，GMV 会等比例跟随。</p>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ==================== D4 工具 ==================== -->
+<div class="deck" id="d4"><div class="wrap">
+
+  <div class="page rv">
+    <div class="pnum">工具 01</div>
+    <div class="phead">
+      <span class="ptag">AI 观点</span>
+      <h2>我对 AI 的判断：<em>不是替代判断，是放大判断</em></h2>
+      <p>AI 用于单次任务的效率提升有限。我关注的是：如何让它改变整个工作流的效率上限。</p>
+    </div>
+    <div class="lad">
+      <div class="lv lv1"><div class="lvn"><u>LEVEL</u><b>1</b></div>
+        <div class="lvc"><h4>用 AI 完成单次任务</h4><p>方案初稿、场次复盘、数据分析 —— 效率提升有限，且不可复用</p></div></div>
+      <div class="lv lv2"><div class="lvn"><u>LEVEL</u><b>2</b></div>
+        <div class="lvc"><h4>把重复流程封装成 Skill</h4><p>打通多系统接口，输入 ID 自动出方案数据框架 —— 从「我快了」变成「全组都快了」</p></div></div>
+      <div class="lv lv3"><div class="lvn"><u>LEVEL</u><b>3</b></div>
+        <div class="lvc"><h4>做成产品化工具</h4><p>运营工作台 + PRD / SOP —— 用产品经理视角思考：谁用、什么场景用、怎么让人愿意用</p></div></div>
+      <div class="lv lv4"><div class="lvn"><u>LEVEL</u><b>4</b></div>
+        <div class="lvc"><h4>做成可对外交付的数据产品</h4><p>邀约 brief / 人群洞察 / 商家雷达 / 内容参考池 / 站外匹配 / 品类指南 —— 工具成为业务沟通的界面</p></div></div>
+    </div>
+    <div class="insight k mt22">
+      <u>我的原则</u>
+      <p><b>不是所有环节都该交给 AI</b>。需要业务判断的部分留给人，机械查数和格式化输出交给 AI。<br>
+      工具的意义是把人从重复劳动里解放出来，去做真正需要判断的事。</p>
+    </div>
+  </div>
+
+  <div class="page rv">
+    <div class="pnum">工具 02</div>
+    <div class="phead">
+      <span class="ptag">对外交付</span>
+      <h2>邀约 brief 看板：<em>把建联沟通标准化</em></h2>
+      <p>每次触达新供给都要人工整理平台价值、行业数据、账号分析，重复且质量取决于个人。输入 ID 即可自动生成一份可直接发送的 brief。</p>
+    </div>
+    <div class="mods">
+      <div class="mod"><b>① 平台价值论证</b><span>目标品类的客单区间、赛道增速、老客复购与蓄水机制价值<em>→ 回答「为什么值得来」</em></span></div>
+      <div class="mod"><b>② 赛道战报墙</b><span>同赛道已验证的破亿案例与成绩<em>→ 建立可信度，降低对方决策顾虑</em></span></div>
+      <div class="mod"><b>③ 账号数据快照</b><span>粉丝量、电商粉、客单价、动销层级、潜力电商规模<em>→ 判断这个账号值不值得投入</em></span></div>
+      <div class="mod"><b>④ 粉丝消费类目分布</b><span>粉丝在站内 27 个行业的消费占比与 TOP6 集中度<em>→ 判断给他推什么货能卖动</em></span></div>
+      <div class="mod"><b>⑤ 粉丝消费品牌 TOP</b><span>粉丝已识别的 6,836 个品牌与 TOP20 集中度<em>→ 反推可撬动的品牌与货盘调性</em></span></div>
+      <div class="mod"><b>⑥ 粉丝跨直播间消费</b><span>粉丝在其他主播直播间的成交分布与集中度<em>→ 判断粉丝的高客单消费习惯是否已被验证</em></span></div>
+      <div class="mod"><b>⑦ 商单收入参考</b><span>近期商业合作报价与收入区间<em>→ 谈判时预判对方的收益预期</em></span></div>
+    </div>
+    <div class="g2 mt18">
+      <figure class="shot"><img src="./assets/invite-board.jpg" alt="邀约brief看板首屏">
+        <figcaption>首屏 · 平台价值论证 + 赛道战报墙</figcaption></figure>
+      <figure class="shot"><img src="./assets/inv-fans.jpg" alt="粉丝消费类目与品牌">
+        <figcaption>粉丝消费类目分布 + 站内消费品牌 TOP20</figcaption></figure>
+    </div>
+    <figure class="shot mt18"><img src="./assets/inv-crossbuy.jpg" alt="粉丝在其他直播间消费">
+      <figcaption>粉丝跨直播间消费 TOP · 判断该账号粉丝的高客单成交习惯是否已被验证</figcaption></figure>
+    <div class="insight mt22">
+      <u>产品化的意义</u>
+      <p>两个提效：<b>判断提效</b>——看数据即可判断潜力，不必先建联再评估；<b>沟通提效</b>——一份看板讲清平台价值、账号现状与货盘建议，可独立交付，接手方无需额外说明。</p>
+    </div>
+  </div>
+
+  <div class="page rv">
+    <div class="pnum">工具 03</div>
+    <div class="phead">
+      <span class="ptag">产品化</span>
+      <h2>运营工作台：<em>以产品视角重构日常流程</em></h2>
+      <p>日常在多个内部系统间反复跳转，200+ 合作对象的排期、投流、内容数据散在各处。</p>
+    </div>
+    <div class="g23">
+      <div>
+        <div class="card"><h4><i>?</i>我的思考路径</h4>
+          <p>以产品经理视角问自己三个问题：<b>要解决哪几个核心痛点？每个功能的最小可用形态是什么？怎么和现有系统打通？</b></p>
+          <p class="mt14">最终以<b>书签注入 CRM</b> 形式交付，不需额外部署，打开 CRM 即可使用。</p></div>
+        <div class="mods mt18">
+          <div class="mod"><b>概览</b><span>目标 DGMV / 达成 / 完成率 / 总场次实时 KPI</span></div>
+          <div class="mod"><b>排期管理</b><span>200+ 对象实时拉取，<em>支持一键投流并监控记录</em></span></div>
+          <div class="mod"><b>内容监控</b><span>预热内容 UV / DGMV，一键跳转投流</span></div>
+          <div class="mod"><b>业绩进度</b><span>业绩达成概览与缺口预警</span></div>
+        </div>
+      </div>
+      <figure class="shot"><img src="./assets/p19-wb-overview.jpg" alt="工作台概览页">
+        <figcaption>概览页 · 实时 KPI 与 Top 榜单</figcaption></figure>
+    </div>
+    <div class="g2 mt18">
+      <figure class="shot"><img src="./assets/p20-wb-schedule.jpg" alt="排期管理页">
+        <figcaption>排期管理 · 实时拉取，支持一键投流</figcaption></figure>
+      <figure class="shot"><img src="./assets/p22-wb-note.jpg" alt="内容监控页">
+        <figcaption>内容监控 · 预热内容数据与投流入口</figcaption></figure>
+    </div>
+    <div class="insight mt22">
+      <u>交付物</u>
+      <p>经多轮提需 → 测试 → 迭代，输出完整 <b>PRD + 上手 SOP</b>，全组可自主部署，后迁移至公司内部数据产品平台。</p>
+    </div>
+  </div>
+
+  <div class="page rv">
+    <div class="pnum">工具 04</div>
+    <div class="phead">
+      <span class="ptag">自建全景</span>
+      <h2>搭建工具全景：<em>8 个工具，全部自己搭建</em></h2>
+      <p>下列工具与看板均由我独立完成需求定义、数据口径设计、搭建与迭代，并配套文档交付全组使用。<br>每一个都对应「人 / 货 / 场」中的具体决策场景。</p>
+    </div>
+    <div class="tb"><table>
+      <tr><th>工具 / 看板</th><th>能看到什么数据</th><th>解决什么判断</th><th>归属</th></tr>
+      <tr><td><b>方案生成 Skill</b></td><td>账号数据、粉丝画像、对标场次、蓄水内容</td><td>方案数据准备：输入 ID 自动出结构化框架</td><td><span class="pill a">人</span></td></tr>
+      <tr><td><b>运营工作台</b></td><td>排期 / 投流 / 内容 / 业绩四类实时数据</td><td>200+ 对象的日常管理与投流决策</td><td><span class="pill a">人</span> <span class="pill b">场</span></td></tr>
+      <tr><td><b>邀约 brief 看板</b></td><td>平台价值、战报、账号快照、粉丝消费全景</td><td>这个账号值不值得建联？怎么打动他？</td><td><span class="pill a">人</span></td></tr>
+      <tr><td><b>站外榜单匹配看板</b></td><td>站外榜单、站内匹配、归属状态、触达通道</td><td>站外供给有多少能撬动？怎么触达？</td><td><span class="pill a">人</span></td></tr>
+      <tr><td><b>人群洞察看板</b></td><td>十大策略人群消费、类目分布、订单抽样、偏好品牌</td><td>这个账号的粉丝到底买什么？推什么货？</td><td><span class="pill b">货</span></td></tr>
+      <tr><td><b>高蓄水内容参考池</b></td><td>全站近 365 天高蓄水内容，四维度每日更新</td><td>预热内容怎么写才有转化？</td><td><span class="pill b">货</span> <span class="pill b">场</span></td></tr>
+      <tr><td><b>品类备货指南</b></td><td>市场盘点、内容公式、选品分档、命名公式</td><td>进入一个新品类，备什么货、定什么价？</td><td><span class="pill b">货</span></td></tr>
+      <tr style="background:var(--pinkbg)"><td><b>商家雷达看板</b></td><td>分品类商家盘子、达人渠道渗透率、渗透状态分档</td><td>这个品类里哪些商家货盘可撬动？优先建联谁？</td><td><span class="pill b">货</span></td></tr>
+    </table></div>
+    <div class="g2 mt18">
+      <figure class="shot"><img src="./assets/fans-gmv.jpg" alt="人群洞察看板">
+        <figcaption>人群洞察 · 人数占比 vs GMV 占比 vs 消费指数（金额已量级化处理）</figcaption></figure>
+      <figure class="shot"><img src="./assets/yugao-pool.jpg" alt="高转化内容参考池">
+        <figcaption>内容参考池 · 全站近 365 天高蓄水内容，四维度每日自动更新</figcaption></figure>
+    </div>
+    <figure class="shot mt18"><img src="./assets/chart-radar.jpg" alt="商家雷达看板">
+      <figcaption>商家雷达看板 · 分品类扫描商家盘子与渠道渗透，识别可撬动货盘（金额已指数化）</figcaption></figure>
+    <p style="margin-top:18px;font-size:13px;color:var(--ink3)">* 部分内部数据已脱敏处理</p>
+  </div>
+
+</div></div>
+
+<!-- ==================== D5 认知 ==================== -->
+<div class="deck" id="d5"><div class="wrap">
+
+  <div class="page rv">
+    <div class="pnum">认知 01</div>
+    <div class="phead">
+      <span class="ptag">行业认知</span>
+      <h2>我对内容电商的<em>三点认知</em></h2>
+      <p>半年下来，比数据结果更有价值的，是我对这门生意本身形成的判断。</p>
+    </div>
+    <div class="g3">
+      <div class="card"><h4><i>1</i>人设与品类自洽，货才带得动</h4>
+        <p>高客单非标品的成交，<b>本质是信任转移</b>——没人会为一个陌生人推荐的两万块商品付款。</p>
+        <p class="mt14">成交发生在<b>人设与品类逻辑自洽</b>的那一刻。财经背景推保值资产能成，是因为叙事成立。</p>
+        <p class="mt14">所以我们一直在找<b>特定画像</b>的账号，并深入洞察其粉丝人群、消费品类与品牌偏好——这也是我做人群洞察看板的原因。</p></div>
+      <div class="card"><h4><i>2</i>沟通要把对方最关心的前置</h4>
+        <p>无论写邀约 brief 还是当面建联，<b>都要主动思考对方最关心什么</b>。</p>
+        <p class="mt14"><b>不同层级的诉求完全不同</b>：中小创作者更关注收入确定性；明星艺人更关注平台宣发、市场声量与资源扶持。</p>
+        <p class="mt14">所以我做 brief 时，会按对象类型<b>调整信息排序</b>——从对方视角出发，而不是把我方想说的堆上去。</p></div>
+      <div class="card"><h4><i>3</i>快速迭代的行业，方法论比经验值钱</h4>
+        <p>互联网电商变化极快，<b>今天的打法明天可能失效</b>——但沉淀方法论的能力不会。</p>
+        <p class="mt14">三件事最重要：<b>方法论沉淀</b>、<b>工具可复用</b>、<b>优秀案例对标与复盘</b>。</p>
+        <p class="mt14">用策略批量解决问题，而不是兵来将挡水来土掩——后者效率低，且窟窿永远堵不完。</p></div>
+    </div>
+    <div class="insight mt22">
+      <u>为什么这些认知可迁移</u>
+      <p>换一个平台、换一个品类，这三条依然成立——<b>它们描述的是「高客单商品在内容场域如何完成交易」的底层规律</b>，以及「在快速变化的环境中如何积累复利」的工作方式。</p>
+    </div>
+  </div>
+
+  <div class="page rv">
+    <div class="pnum">认知 02</div>
+    <div class="phead">
+      <span class="ptag">视角对照</span>
+      <h2>两种视角：<em>中台定规则，一线做判断</em></h2>
+      <p>在 Shopee 我做的是策略中台，在小红书我做的是业务一线。两种视角的差异，让我更清楚策略该怎么落地。</p>
+    </div>
+    <div class="vs">
+      <div class="vc a"><h5>Shopee · 跨境策略中台</h5>
+        <p><b>视角</b>：给一个区域的卖家群体设计规则</p>
+        <p class="mt14"><b>核心工作</b>：从 0 搭建 FY26 卖家增长预测模型——建立 5 类卖家标签体系，按成长阶段与品类特征分层，输出年度增长预测。</p>
+        <div class="stats mt14">
+          <div class="st"><b>7.2%</b><i>模型预测偏差</i></div>
+          <div class="st"><b>23%→58%</b><i>站点扩张报名率</i></div>
+        </div>
+        <p class="mt14">模型成为区域团队制定目标与分配资源的依据。</p></div>
+      <div class="vsx">VS</div>
+      <div class="vc b"><h5>小红书 · 电商供给一线</h5>
+        <p><b>视角</b>：给具体的人和货做判断</p>
+        <p class="mt14"><b>核心工作</b>：为单个账号建立准入标尺、匹配货盘、规划场次结构，并把判断沉淀成全组可用的工具。</p>
+        <div class="stats mt14">
+          <div class="st v"><b>30+</b><i>主导直播全案</i></div>
+          <div class="st v"><b>8 个</b><i>产品化工具</i></div>
+        </div>
+        <p class="mt14">判断必须在具体场景中被验证，否则只是纸面推演。</p></div>
+    </div>
+    <div class="insight k mt22">
+      <u>两种视角给我的东西</u>
+      <p>中台视角教会我<b>如何用分层与模型处理规模化问题</b>；一线视角教会我<b>策略必须落地才有价值，而落地必须有工具承载</b>。<br>
+      这也是为什么我做每一个判断，都会同步想「它能不能被工具化」。</p>
+    </div>
+  </div>
+
+  <div class="page rv">
+    <div class="pnum">认知 03</div>
+    <div class="phead">
+      <span class="ptag">ABOUT ME</span>
+      <h2>关于我，<em>和下一步</em></h2>
+    </div>
+    <div class="closing">
+      <p>从金融转向互联网，跨进一个全新品类时我对这个行业几乎一无所知——<br>
+      但我可以<b>用数据快速建立对一个行业的认知框架，把「感觉」换成「依据」</b>。</p>
+      <p class="gold">数据给了我看清问题的眼睛，但真正让我想继续走下去的，<br>
+      是每一次「我猜是这样」被数据验证的瞬间，和每一次验证失败后重新建立假设的过程。</p>
+    </div>
+    <div class="g3 mt22">
+      <div class="card"><h4><i>1</i>继续做判断标尺</h4>
+        <p>把数据驱动决策的方法论沉淀得更完整，让判断可复核、可复用。</p></div>
+      <div class="card"><h4><i>2</i>把 AI 用得更深</h4>
+        <p>从「执行工具」变成真正的工作搭子，学会精准提需与迭代结果。</p></div>
+      <div class="card"><h4><i>3</i>把方法迁移到更大的商业场景</h4>
+        <p>目前验证过的是单一品类的供给经营。下一步希望在更完整的电商与商业化链路中检验这套方法——<b>用户增长、货品策略、广告投放效率</b>，都是同一套「建标尺、做验证、沉淀复用」的逻辑。</p></div>
+    </div>
+    <div class="contact mt22">
+      <a class="cc" href="mailto:hnaywx2023@163.com"><u>EMAIL</u><b>hnaywx2023@163.com</b></a>
+      <a class="cc" href="tel:18237226962"><u>PHONE</u><b>182 3722 6962</b></a>
+      <div class="cc"><u>EDUCATION</u><b>复旦大学 · 金融硕士 · 27 届</b></div>
+      <div class="cc"><u>LOCATION</u><b>上海</b></div>
+    </div>
+  </div>
+
+</div></div>
+
+<footer><div class="wrap">王雪 · 作品集 2026</div></footer>
+
+<script>
+const tabs=[...document.querySelectorAll('.tab')],decks=[...document.querySelectorAll('.deck')];
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},
+  {threshold:.04,rootMargin:'0px 0px -30px 0px'});
+function obs(d){d.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3*60)+'ms';io.observe(el)})}
+tabs.forEach((t,i)=>t.onclick=()=>{
+  tabs.forEach(x=>x.classList.remove('on'));t.classList.add('on');
+  decks.forEach((d,j)=>d.classList.toggle('on',i===j));
+  window.scrollTo({top:0,behavior:'smooth'});
+  const d=decks[i];
+  d.querySelectorAll('.rv').forEach((r,k)=>{r.classList.remove('on');setTimeout(()=>r.classList.add('on'),60+k*70)});
+});
+obs(decks[0]);
+decks.slice(1).forEach(obs);
+</script>
+</body>
+</html>
