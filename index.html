@@ -7,12 +7,14 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --pink:#E8637A;--pink2:#F5A0B0;--pinkbg:#FDF4F6;--pinkline:#F7DCE3;
-  --pp:#8B7CD8;--pp2:#B3A8E8;--ppbg:#F5F2FC;--ppline:#E3DCF5;
-  --ink:#2C2C34;--ink2:#65656F;--ink3:#9B9BA6;
-  --line:#EDE8EB;--bg:#FCFBFC;
-  --sh:0 1px 2px rgba(139,124,216,.04),0 6px 18px rgba(232,99,122,.055);
-  --sh2:0 4px 14px rgba(139,124,216,.09),0 18px 44px rgba(232,99,122,.11);
+  /* 主色系：紫（--pink 变量名沿用旧名，实际已换为紫） */
+  --pink:#7C5CD6;--pink2:#A594E8;--pinkbg:#F5F2FD;--pinkline:#E3DBF7;
+  /* 辅色：兰花紫，用于渐变收尾与强调 */
+  --pp:#B565C9;--pp2:#D3A6E2;--ppbg:#FAF4FC;--ppline:#F0E2F5;
+  --ink:#2A2733;--ink2:#615E6E;--ink3:#97949F;
+  --line:#EAE6F0;--bg:#FBFAFD;
+  --sh:0 1px 2px rgba(124,92,214,.05),0 6px 18px rgba(124,92,214,.07);
+  --sh2:0 4px 14px rgba(124,92,214,.11),0 18px 44px rgba(181,101,201,.13);
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);
@@ -31,7 +33,7 @@ body{background:var(--bg);color:var(--ink);
 .tab{padding:10px 21px;border-radius:100px;font-size:14px;font-weight:700;color:var(--ink2);
   border:none;background:none;cursor:pointer;font-family:inherit;transition:.28s;white-space:nowrap}
 .tab:hover{color:var(--pink);background:var(--pinkbg)}
-.tab.on{background:linear-gradient(120deg,var(--pink),var(--pp));color:#fff;box-shadow:0 3px 11px rgba(232,99,122,.3)}
+.tab.on{background:linear-gradient(120deg,var(--pink),var(--pp));color:#fff;box-shadow:0 3px 11px rgba(124,92,214,.32)}
 @media(max-width:900px){.tab{padding:8px 13px;font-size:12px}}
 
 /* DECK */
@@ -104,15 +106,15 @@ body{background:var(--bg);color:var(--ink);
 .tb{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
 table{width:100%;border-collapse:collapse;font-size:14px}
 th{padding:13px 16px;text-align:left;font-size:11px;letter-spacing:1.3px;color:var(--ink3);
-  font-weight:800;background:#FBF9FB;border-bottom:1px solid var(--line);white-space:nowrap}
+  font-weight:800;background:#FAF8FD;border-bottom:1px solid var(--line);white-space:nowrap}
 td{padding:13px 16px;border-bottom:1px solid var(--line);color:var(--ink2);line-height:1.7}
 tr:last-child td{border-bottom:none}
 td b{color:var(--ink);font-weight:750}
 .hot{color:var(--pink);font-weight:800}
 .pill{display:inline-block;font-size:11px;font-weight:750;padding:3px 9px;border-radius:5px;white-space:nowrap}
-.pill.a{background:rgba(232,99,122,.13);color:var(--pink)}
-.pill.b{background:rgba(139,124,216,.13);color:var(--pp)}
-.pill.c{background:#F1F0F3;color:var(--ink3)}
+.pill.a{background:rgba(124,92,214,.15);color:var(--pink)}
+.pill.b{background:rgba(181,101,201,.14);color:var(--pp)}
+.pill.c{background:#F0EEF5;color:var(--ink3)}
 
 /* figure */
 figure.shot{border:1px solid var(--line);border-radius:15px;overflow:hidden;background:#fff;box-shadow:var(--sh)}
@@ -128,9 +130,9 @@ figure.shot figcaption{padding:11px 17px;font-size:12px;color:var(--ink3);border
   background:linear-gradient(180deg,var(--pinkline),var(--ppline))}
 .sdot{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:15px;
   font-weight:800;color:#fff;background:linear-gradient(140deg,var(--pink),var(--pp));z-index:1;
-  box-shadow:0 4px 12px rgba(232,99,122,.24)}
-.stp:nth-child(2) .sdot{background:linear-gradient(140deg,#EA7288,#9C8FDD)}
-.stp:nth-child(3) .sdot{background:linear-gradient(140deg,#EE8195,#A99CE2)}
+  box-shadow:0 4px 12px rgba(124,92,214,.26)}
+.stp:nth-child(2) .sdot{background:linear-gradient(140deg,#7C5CD6,#A78BE8)}
+.stp:nth-child(3) .sdot{background:linear-gradient(140deg,#8E6FE0,#C57FD6)}
 .stp:nth-child(4) .sdot{background:linear-gradient(140deg,var(--pp),var(--pink))}
 .sbd h5{font-size:16px;font-weight:760;margin-bottom:6px;padding-top:8px}
 .sbd p{font-size:14.5px;color:var(--ink2);line-height:1.85}
@@ -154,8 +156,8 @@ figure.shot figcaption{padding:11px 17px;font-size:12px;color:var(--ink3);border
 .fun{display:grid;gap:9px}
 .fr{display:flex;align-items:center;gap:15px;flex-wrap:wrap}
 .fb{height:44px;border-radius:10px;display:flex;align-items:center;padding:0 19px;
-  font-weight:770;font-size:14.5px;color:#fff;white-space:nowrap;background:linear-gradient(100deg,var(--pink),#EC8093)}
-.fr:nth-child(2) .fb{background:linear-gradient(100deg,#CE8CC4,var(--pp2))}
+  font-weight:770;font-size:14.5px;color:#fff;white-space:nowrap;background:linear-gradient(100deg,var(--pink),#9B72E0)}
+.fr:nth-child(2) .fb{background:linear-gradient(100deg,#B565C9,var(--pp2))}
 .fr:nth-child(3) .fb{background:linear-gradient(100deg,var(--pp),#A294E0)}
 .fm{font-size:13.5px;color:var(--ink2)}
 .fm b{color:var(--ink);font-weight:750}
@@ -169,7 +171,7 @@ figure.shot figcaption{padding:11px 17px;font-size:12px;color:var(--ink3);border
 .lvn{text-align:center}
 .lvn u{text-decoration:none;font-size:9px;letter-spacing:1.3px;color:var(--ink3);font-weight:800;display:block}
 .lvn b{display:block;font-size:26px;font-weight:800;line-height:1.1;margin-top:2px}
-.lv1{border-left:4px solid #DCD7E0}.lv1 .lvn b{color:#C2BDC9}
+.lv1{border-left:4px solid #DAD4E6}.lv1 .lvn b{color:#BCB5CC}
 .lv2{border-left:4px solid var(--pp2)}.lv2 .lvn b{color:var(--pp2)}
 .lv3{border-left:4px solid var(--pp)}.lv3 .lvn b{color:var(--pp)}
 .lv4{border-left:4px solid var(--pink);background:linear-gradient(108deg,var(--pinkbg),#fff 55%)}
@@ -201,9 +203,9 @@ figure.shot figcaption{padding:11px 17px;font-size:12px;color:var(--ink3);border
 /* hero */
 .hero{padding:56px 0 20px;position:relative}
 .hero::before{content:'';position:absolute;top:-130px;right:-110px;width:470px;height:470px;border-radius:50%;
-  background:radial-gradient(circle,rgba(232,99,122,.12),transparent 66%);pointer-events:none}
+  background:radial-gradient(circle,rgba(124,92,214,.14),transparent 66%);pointer-events:none}
 .hero::after{content:'';position:absolute;bottom:-160px;left:-140px;width:420px;height:420px;border-radius:50%;
-  background:radial-gradient(circle,rgba(139,124,216,.12),transparent 66%);pointer-events:none}
+  background:radial-gradient(circle,rgba(181,101,201,.13),transparent 66%);pointer-events:none}
 .hero>*{position:relative;z-index:1}
 .badge{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;letter-spacing:2px;font-weight:800;
   color:var(--pink);background:var(--pinkbg);border:1px solid var(--pinkline);
@@ -244,25 +246,24 @@ footer{padding:30px 0 46px;text-align:center;color:var(--ink3);font-size:12px}
 <body>
 
 <div class="nav"><div class="navin">
-  <div class="navname">王雪 <b>·</b> 27 届复旦大学金融硕士 <b>·</b> 求职互联网商业化 / 电商策略</div>
+  <div class="navname">王雪 <b>·</b> 27 届复旦大学金融硕士 <b>·</b> 求职策略运营 / 商业分析 / 广告运营</div>
   <div class="tabs">
     <button class="tab on" data-d="d0">开篇</button>
-    <button class="tab" data-d="d1">人 · 供给获取</button>
-    <button class="tab" data-d="d2">货 · 供给匹配</button>
-    <button class="tab" data-d="d3">场 · 量级放大</button>
-    <button class="tab" data-d="d4">AI 工具杠杆</button>
-    <button class="tab" data-d="d5">我的认知</button>
+    <button class="tab" data-d="d1">先知后行 · 决策产品</button>
+    <button class="tab" data-d="d2">案例 · 数据与策略落地</button>
+    <button class="tab" data-d="d3">工具 · 自建工具矩阵</button>
+    <button class="tab" data-d="d4">关于我</button>
   </div>
 </div></div>
 
-<!-- ==================== D0 ==================== -->
+<!-- ==================== D0 开篇 ==================== -->
 <div class="deck on" id="d0"><div class="wrap">
 
   <div class="hero rv">
     <div class="badge"><i></i>PORTFOLIO 2026</div>
-    <h1>我做的是<span class="grad">电商供给侧经营</span><br>把判断变成标尺，把标尺变成工具</h1>
-    <p class="hsub">内容电商的增长，最终取决于<b>供给的质量与组织效率</b>。<br>
-    我的工作是用数据回答「找什么供给、给什么货、怎么放大量级」，<br>并把每一次判断沉淀成组织可复用的方法与产品。</p>
+    <h1>把业务判断变成<span class="grad">可量化的标尺</span><br>再用工具让判断可复用</h1>
+    <p class="hsub">我擅长把模糊的业务问题变成可量化的标尺，再用工具让判断可复用——在电商供给侧的一线，
+    我沉淀出一套<b>数据驱动的决策方法</b>，并把它做成了一个 <b>AI 决策产品</b>。</p>
     <div class="hmeta">
       <span>复旦大学 · 金融硕士</span>
       <span>小红书 · 电商供给运营</span>
@@ -272,45 +273,29 @@ footer{padding:30px 0 46px;text-align:center;color:var(--ink3);font-size:12px}
   </div>
 
   <div class="kpi rv mt26">
-    <div class="k"><b>30+</b><i>主导直播全案与投放规划</i></div>
     <div class="k"><b>5 套</b><i>从 0 搭建的判断模型</i></div>
     <div class="k"><b>8 个</b><i>产品化工具 / 数据看板</i></div>
+    <div class="k"><b>1 个</b><i>端到端 AI 决策产品</i></div>
     <div class="k"><b>3 类</b><i>沉淀为组织资产的方法论</i></div>
   </div>
 
   <div class="page rv">
     <div class="pnum">01</div>
     <div class="phead">
-      <span class="ptag">FRAMEWORK</span>
-      <h2>供给侧经营的<em>三个核心问题</em></h2>
-      <p>供给侧经营可拆解为三个递进问题。每一层均建立了对应的判断标尺，并完成工具化。</p>
+      <span class="ptag">APPROACH</span>
+      <h2>三种贯穿始终的<em>工作方式</em></h2>
+      <p>比起单一的业绩结果，更能说明问题的是稳定的工作方式。以下三点贯穿本作品集的人、货、产品各部分，也是我处理业务问题时相对固定的路径。</p>
     </div>
     <div class="g3">
-      <div class="card"><h4><i>人</i>怎么找到对的供给</h4>
-        <p><b>问题</b>：谁能承接高客单品类的成交？</p>
-        <ul class="mt14">
-          <li>数学模型反推准入门槛</li>
-          <li>四通道并行的供给挖掘体系</li>
-          <li>六大分型定位货盘方向</li>
-        </ul></div>
-      <div class="card"><h4><i>货</i>怎么让供给卖得动</h4>
-        <p><b>问题</b>：什么品类能真正把钱赚到手？</p>
-        <ul class="mt14">
-          <li>行业三维 + 结算率双重验证</li>
-          <li>AB 实验实证替代主观判断</li>
-          <li>品类知识沉淀为备货指南</li>
-        </ul></div>
-      <div class="card"><h4><i>场</i>怎么把量级推上去</h4>
-        <p><b>问题</b>：冲击历史高点需要哪些结构条件？</p>
-        <ul class="mt14">
-          <li>历史全量 + 对标反推目标结构</li>
-          <li>拆解货盘配比 / 蓄水盘 / 坑产密度</li>
-          <li>定位最可控的增长杠杆</li>
-        </ul></div>
-    </div>
-    <div class="insight mt22">
-      <u>贯穿三层的能力</u>
-      <p>三层的共同点是：<b>先把模糊的业务问题翻译成可被数据回答的问题</b>，再用工具把一次性的判断变成可重复调用的能力。</p>
+      <div class="card"><h4><i>1</i>把模糊问题变成可量化的标尺</h4>
+        <p>"这个账号是否值得投入""这个品类是否值得做"，这类判断往往依赖主观经验。我倾向先将其<b>转化为可被数据回答的问题</b>，再建立一条可复核的标准线。</p>
+        <p class="mt14">例：用数学模型反推首播准入门槛；把全站创作者切成 233 组对照基准，让每个指标都有参照系。</p></div>
+      <div class="card"><h4><i>2</i>以实验验证替代主观判断</h4>
+        <p>一个判断是否成立，最终取决于能否被实际结果检验，而非论证是否完整。因此我倾向<b>先以小样本或 AB 实验验证，再放大资源投入</b>。</p>
+        <p class="mt14">例：选两场同量级大场做对照，用实测数据验证品类判断；把品类指南的预测与真实成交逐条对账，含没命中的部分。</p></div>
+      <div class="card"><h4><i>3</i>把一次性判断沉淀成组织能力</h4>
+        <p>一次判断只解决一个对象、一个场次。我会把判断过程<b>沉淀成模型、工具或知识库</b>，让下一个人可以直接调用。</p>
+        <p class="mt14">例：8 个自建工具 + 一个端到端 AI 决策产品「先知后行」，把个人经验转化为人人可查、可比、可复用的组织资产。</p></div>
     </div>
   </div>
 
@@ -318,576 +303,336 @@ footer{padding:30px 0 46px;text-align:center;color:var(--ink3);font-size:12px}
     <div class="pnum">02</div>
     <div class="phead">
       <span class="ptag">METHOD</span>
-      <h2>工作方法：<em>四步闭环</em></h2>
-      <p>处理不同业务问题时，沿用同一套路径。该方法不依赖特定行业背景，具备迁移性。</p>
+      <h2>一套方法：<em>建标尺 → 做验证 → 沉淀工具</em></h2>
+      <p>处理不同业务问题时，我沿用同一套路径。它不依赖特定行业背景，具备迁移性——这也是本作品集后续每一部分的底层逻辑。</p>
     </div>
-    <div class="hflow">
-      <div class="hf"><u>STEP 01</u><h5>翻译问题</h5><p>将「GMV 不足」拆解为人、货、场三类归因，先定位问题所属层级</p></div>
-      <div class="hf"><u>STEP 02</u><h5>建立标尺</h5><p>用数据给出可量化依据，把主观经验变成可排序、可复核的标准</p></div>
-      <div class="hf"><u>STEP 03</u><h5>小步验证</h5><p>先做 AB 实验或小样本验证，确认逻辑成立，再放大资源投入</p></div>
-      <div class="hf"><u>STEP 04</u><h5>沉淀复用</h5><p>把判断过程变成下次可直接调用的模型、工具或知识资产</p></div>
-    </div>
-    <div class="g2 mt22">
-      <div class="card"><h4><i>?</i>标尺环节的作用</h4>
-        <p>缺少标尺时，判断只能依赖个人经验，难以被检验。<br>
-        <b>建立标尺意味着：这个判断可以被复核，也可以被下一个人复用。</b></p></div>
-      <div class="card"><h4><i>!</i>沉淀环节的作用</h4>
-        <p>一次判断只解决一个对象、一个场次。<br>
-        <b>沉淀成工具或指南，判断才能脱离个人、成为组织能力。</b></p></div>
+    <div class="steps">
+      <div class="stp"><div class="sdot">01</div><div class="sbd">
+        <h5>翻译问题</h5><p>把"GMV 不足""该找谁"这类模糊命题，拆解成人、货、场三类可归因的具体问题，先定位问题所属层级。</p></div></div>
+      <div class="stp"><div class="sdot">02</div><div class="sbd">
+        <h5>建立标尺</h5><p>用数据给出可量化依据，把主观经验变成<b>可排序、可复核</b>的标准——这是整套方法里最关键的一步。</p></div></div>
+      <div class="stp"><div class="sdot">03</div><div class="sbd">
+        <h5>小步验证</h5><p>先做 AB 实验或小样本验证，确认逻辑成立，再放大资源投入，避免一次性押注。</p></div></div>
+      <div class="stp"><div class="sdot">04</div><div class="sbd">
+        <h5>沉淀工具</h5><p>把判断过程做成下次可直接调用的模型、工具或知识资产，让判断脱离个人、成为组织能力。</p></div></div>
     </div>
     <div class="insight k mt22">
-      <u>小结</u>
-      <p>相较完成单次任务，<b>将判断过程沉淀为可复制的资产</b>更具长期价值。</p>
+      <u>为什么强调"标尺"和"沉淀"</u>
+      <p>缺少标尺时，判断只能依赖个人经验，难以被检验；<b>建立标尺意味着判断可复核、可被下一个人复用</b>。而沉淀成工具，判断才能脱离个人、成为组织能力。<br>
+      本作品集的重头戏「先知后行」，正是这套方法走到"产品化"这一步的结果。</p>
     </div>
   </div>
 
 </div></div>
 
-<!-- ==================== D1 人 ==================== -->
+<!-- ==================== D1 先知后行 ==================== -->
 <div class="deck" id="d1"><div class="wrap">
 
   <div class="page rv">
-    <div class="pnum">人 02</div>
+    <div class="pnum">先知后行 01</div>
     <div class="phead">
-      <span class="ptag">建立标尺</span>
-      <h2>工具缺位下的<em>判断标尺搭建</em></h2>
-      <p>某财经类账号高客单大场实现单场破亿，该路径得到验证。需在组内批量复制，但当时站内相似账号推荐功能尚未上线。</p>
+      <span class="ptag">PRODUCT · 全景</span>
+      <h2>先知后行：<em>一条从诊断到执行的 AI 决策链路</em></h2>
+      <p>这是我独立设计并落地的一个端到端产品。它的核心不是让 AI 替人做判断，而是<b>先为 AI 建立一个"可比的坐标系"，把资深买手才具备的判断依据，转化为人人可查、可比、可复用的结构化输入</b>。</p>
     </div>
-    <div class="g23">
-      <div>
-        <div class="insight k" style="margin-bottom:18px">
-          <u>问题定义</u>
-          <p>一个账号要做到千万级首场，其粉丝规模、电商属性、客单水平的<b>下限</b>分别是多少？</p>
-        </div>
-        <div class="steps">
-          <div class="stp"><div class="sdot">1</div><div class="sbd">
-            <h5>数学模型反推门槛</h5>
-            <p>目标 GMV ÷ 客单溢价倍数 ÷ 粉丝激活率（实测 50 个头部账号约 <b>3.4%</b>）<br>
-            → 硬性基准线：<b>30 天电商粉 ≥ 3 万 · 粉丝客单 ≥ 1000 元</b></p></div></div>
-          <div class="stp"><div class="sdot">2</div><div class="sbd">
-            <h5>五层漏斗叠加软性条件</h5>
-            <p>赛道匹配 → 内容调性 → 人设可信度 → 粉丝画像重合 → 商业化意愿</p></div></div>
-          <div class="stp"><div class="sdot">3</div><div class="sbd">
-            <h5>锁定目标 · @蘑菇妈妈</h5>
-            <p>118w 粉 / 电商粉 38.7w / 客单 1670 元 / <b>11 年基金从业背景</b><br>
-            「专业理财人推荐保值资产」——人设与品类的叙事逻辑天然自洽</p></div></div>
-        </div>
-      </div>
-      <figure class="shot"><img src="./assets/p04-funnel-logic.jpg" alt="五层漏斗筛选逻辑">
-        <figcaption>筛选逻辑 · 目标反推 → 画像圈层 → 双路取数输出候选池</figcaption></figure>
-    </div>
-    <div class="insight mt22">
-      <u>方法论沉淀</u>
-      <p>模型的意义不在于找到某一个人，而在于把「什么样的账号可能跑通」<b>变成一条可复核的基准线</b>，后续复用到同类赛道。</p>
-    </div>
-  </div>
-
-  <div class="page rv">
-    <div class="pnum">人 01</div>
-    <div class="phead">
-      <span class="ptag">供给获取</span>
-      <h2>供给获取：<em>从个案推荐到通道体系</em></h2>
-      <p>标尺解决的是单个对象的评估问题，供给来源本身仍需体系化。<br>单条通道产能有限，故将供给获取拆分为四条并行通道。</p>
-    </div>
-    <div class="insight">
-      <u>核心判断</u>
-      <p>供给获取需要<b>多通道并行管理</b>——每条通道对应不同的供给池、建联成本与转化确定性。</p>
-    </div>
-    <div class="tb mt22"><table>
-      <tr><th>通道</th><th>供给来源</th><th>核心动作</th><th>定位</th><th>进展</th></tr>
-      <tr><td><b>新分型挖掘</b><br><span style="font-size:12.5px;color:#9B9BA6">二奢主理人</span></td>
-          <td>站内跨品类迁移</td><td>人群重合度 + 客单水平分析</td><td><span class="pill a">开拓增量分型</span></td><td>8-9 月 3 位首播</td></tr>
-      <tr><td><b>消费人群反查</b></td><td>存量高客单粉丝盘</td><td>已下单粉丝反查其关注账号</td><td><span class="pill a">精准度最高</span></td><td>命中 67 个候选</td></tr>
-      <tr><td><b>站外榜单匹配</b></td><td>竞对平台</td><td>榜单抓取 + 站内账号全量匹配</td><td><span class="pill b">覆盖面最广</span></td><td>已产品化看板</td></tr>
-      <tr><td><b>平台已有关系</b></td><td>官方合作名单</td><td>名单梳理 + 建联</td><td><span class="pill b">建联成本最低</span></td><td>建联中</td></tr>
-    </table></div>
-    <div class="g2 mt18">
-      <figure class="shot"><img src="./assets/chart-ershe.jpg" alt="新分型迁移判断链路">
-        <figcaption>通道一 · 新分型挖掘的筛选漏斗与四条判断依据</figcaption></figure>
-      <figure class="shot"><img src="./assets/chart-persona.jpg" alt="人群同源性验证">
-        <figcaption>通道一 · 人群同源性验证：年龄与策略人群结构高度重合</figcaption></figure>
-    </div>
-    <div class="g2 mt18">
-      <figure class="shot"><img src="./assets/chart-overlap.jpg" alt="消费人群反查取数逻辑">
-        <figcaption>通道二 · 反查取数逻辑：用真实成交行为反推可承接同一批消费力的账号</figcaption></figure>
-      <figure class="shot"><img src="./assets/chart-overlap-list.jpg" alt="反查候选名单产出">
-        <figcaption>通道二 · 产出名单：67 个候选中 53 个满足电商硬门槛（数据已脱敏）</figcaption></figure>
-    </div>
-    <figure class="shot mt18"><img src="./assets/dy-board.jpg" alt="站外榜单匹配看板">
-      <figcaption>通道三 · 站外榜单匹配看板：3,449 站外达人 → 620 站内匹配 → 49 核心攻坚池</figcaption></figure>
-  </div>
-
-  <div class="page rv">
-    <div class="pnum">人 03</div>
-    <div class="phead">
-      <span class="ptag">货盘与内容</span>
-      <h2>货盘与内容匹配：<em>两项可复用框架</em></h2>
-      <p>确定合作对象后需解决两个问题：货盘方向与预热内容。二者均以数据为依据，并沉淀为可复用框架。</p>
-    </div>
-    <div class="g2">
-      <div class="card"><h4><i>A</i>六大分型 · 定位货盘方向</h4>
-        <div class="tb mt14"><table>
-          <tr><th>分型</th><th>推荐货盘</th></tr>
-          <tr><td>明星 / 名人</td><td>高端珠宝 + 轻奢黄金</td></tr>
-          <tr style="background:var(--pinkbg)"><td><b>财经类</b></td><td class="hot">黄金金条 + 和田玉</td></tr>
-          <tr><td>时尚穿搭</td><td>新中式首饰 + 珍珠</td></tr>
-          <tr><td>主持人</td><td>翡翠玉石 + 高端珍珠</td></tr>
-          <tr><td>文化 / 收藏</td><td>文玩手串 + 文化属性珠宝</td></tr>
-          <tr><td>品牌主理人</td><td>自有品牌 + 设计师款</td></tr>
-        </table></div>
-        <p class="mt14"><b>结论</b>：货盘聚焦单品类 + 蓄水冲刺，是首场最高 ROI 的动作组合</p></div>
-      <div class="card"><h4><i>B</i>8 维招商评分模型 · 锁定商家</h4>
-        <p>三类商家池 × 8 大指标，<b>Min-Max 标准化后加权计分</b>，输出 0-100 分排序。</p>
-        <ul class="mt14">
-          <li>店播 GPM · 近 30 天店播 DGMV · 达人渠道 DGMV</li>
-          <li>笔单价 · 店播 CTR · 直播曝光</li>
-          <li>内容 DGMV · 近 30 天广告 DGMV</li>
-        </ul>
-        <p class="mt14">把「哪家商家值得优先建联」<b>从主观判断变成可排序的决策依据</b></p></div>
-    </div>
-    <div class="g2 mt18">
-      <figure class="shot"><img src="./assets/p07-score-model.jpg" alt="8维招商评分模型">
-        <figcaption>8 维评分模型 · 多指标标准化后加权排序输出商家优先级</figcaption></figure>
-      <figure class="shot"><img src="./assets/p09-note-formula.jpg" alt="内容规律分析">
-        <figcaption>内容公式 · 8196 条高蓄水内容 → 213 条有效样本 → 6 类内容套路</figcaption></figure>
+    <div class="hflow">
+      <div class="hf"><u>STEP 1</u><h5>商业价值诊断</h5><p>我在哪：这个账号值不值得投入</p></div>
+      <div class="hf"><u>STEP 2</u><h5>品类经营指南</h5><p>往哪走：陌生品类怎么做起来</p></div>
+      <div class="hf"><u>STEP 3</u><h5>场次方案生成</h5><p>怎么走：判断翻译成一场直播</p></div>
+      <div class="hf"><u>STEP 4</u><h5>实证案例</h5><p>走对没：预测与真实成交对账</p></div>
     </div>
     <div class="insight k mt22">
-      <u>内容公式结论</u>
-      <p><b>紧迫感 + 价格锚点</b> / <b>规模感 + 稀缺性</b> 是转化效率最高的内容模式；视频形态贡献 <b>62%</b> 蓄水量，预热期应优先投视频。</p>
+      <u>核心设计理念</u>
+      <p>同样一个模型，输入"该账号月 GMV 500 万"与输入"该账号月 GMV 500 万，在同垂类同粉段样本中位于 P94"，输出质量差异显著。<br>
+      <b>先建立坐标系，再引入 AI</b>——其中最关键的两个环节，是为 AI 建立对照组，以及用真实结果回溯验证。</p>
     </div>
+    <div class="stats mt22">
+      <div class="st"><b>21</b><i>覆盖品类（珠宝文玩 10 + 美护 11）</i></div>
+      <div class="st v"><b>233 组</b><i>垂类 × 粉丝段 对照基准</i></div>
+      <div class="st"><b>十万级</b><i>可查买手明细</i></div>
+      <div class="st v"><b>110 人</b><i>同水平标杆池</i></div>
+    </div>
+    <p style="margin-top:14px;font-size:13px;color:var(--ink3)">技术实现：FastAPI + 原生 JS 单页（图表均为手写 SVG），部署于公司内部应用平台，AI 能力走内部网关。下方分述两个核心模块。</p>
   </div>
 
   <div class="page rv">
-    <div class="pnum">人 04</div>
+    <div class="pnum">先知后行 02</div>
     <div class="phead">
-      <span class="ptag">结果验证</span>
-      <h2>结果验证：<em>策略成立并完成复制</em></h2>
-      <p>模型有效性由实际结果检验；方法论是否成立，取决于能否在第二个对象上复现。</p>
+      <span class="ptag">模块一 · 账号诊断</span>
+      <h2>商业价值诊断：<em>给"看人"一个参照系</em></h2>
     </div>
-    <div class="g2">
-      <div class="tb"><table>
-        <tr><th></th><th>首场</th><th>第二场 · All in 单品类</th></tr>
-        <tr><td><b>GMV</b></td><td><b class="hot">2,617 万</b></td><td><b class="hot">3,059 万</b></td></tr>
-        <tr><td><b>GPM</b></td><td>11,530</td><td><b class="hot">15,606 · +35%</b></td></tr>
-        <tr><td><b>蓄水用户贡献</b></td><td>GMV 占比 <b>82.3%</b></td><td>验证单品类聚焦判断</td></tr>
-        <tr><td><b>客单价</b></td><td>11,227 元</td><td>—</td></tr>
-      </table></div>
-      <div>
-        <div class="stats">
-          <div class="st"><b>100 万+</b><i>复制验证 · 另一同类账号首场</i></div>
-          <div class="st v"><b>2,507</b><i>复制场次 GPM</i></div>
-        </div>
-        <div class="card mt14"><h4><i>✓</i>链路闭环</h4>
-          <p><b>数据漏斗找人 → 分型框架定货盘 → 蓄水数据反推内容 → 打法复制</b><br>
-          底层是「人设 × 货盘 × 内容 × 粉丝决策力」的四重匹配。</p></div>
-      </div>
+    <div class="g3">
+      <div class="card"><h4><i>卡</i>卡点</h4>
+        <p>建联新账号时，"这个账号是否值得投入"主要依赖经验判断。仅看粉丝量会被大号误导，仅看 GMV 又会漏掉起步期的潜力账号——<b>根本问题在于缺乏参照系</b>。</p></div>
+      <div class="card"><h4><i>解</i>做法</h4>
+        <p>引入<b>对照组思维</b>：全站按"垂类 × 粉丝段"切 233 组，每个指标只跟同类同体量的人比，插值算百分位；再把变现拆成<b>蒲公英 / 电商 / 内容</b>三条路分别打分。</p></div>
+      <div class="card"><h4><i>出</i>产出</h4>
+        <p>一份可直接用于建联沟通的诊断结论：优势项、短板项、下一步主攻路径与同水平对标对象。<b>分数偏低并非说明账号不佳，而是该路径尚未开展——这恰是拓新的机会点。</b></p></div>
     </div>
+    <div class="insight mt22">
+      <u>一个体现严谨性的设计</u>
+      <p>垂类内样本不足 30 人时<b>自动降级</b>为全站同粉段口径，页面如实标出实际用的是哪一种——避免小样本分位失真。这类"看起来很笨"的处理，正是让判断经得起追问的地方。</p>
+    </div>
+    <figure class="shot mt22"><img src="./assets/xzhx-diag.png" alt="账号诊断模块界面">
+      <figcaption>账号诊断 · 对照基准口径、三条变现路径分位与电商目标测算（金额类数据已脱敏）</figcaption></figure>
+  </div>
+
+  <div class="page rv">
+    <div class="pnum">先知后行 03</div>
+    <div class="phead">
+      <span class="ptag">模块二 · 品类指南</span>
+      <h2>品类经营指南：<em>把老手的品类认知变成可查手册</em></h2>
+    </div>
+    <div class="g3">
+      <div class="card"><h4><i>卡</i>卡点</h4>
+        <p>买手要拓一个陌生品类（如一直播黄金、现在要开沉香专场），买手和运营都缺前置认知，准备工作繁重；而优质买手翻一次车，损失不止一场 GMV。</p></div>
+      <div class="card"><h4><i>解</i>做法</h4>
+        <p>把品类认知拆成<b>知识层 + 数据层</b>：知识层沉淀行话、分级、雷区；数据层接站内真实场次——谁在做、卖什么价、爆品长什么样。AI 在两层之上做解读，而非无依据生成。</p></div>
+      <div class="card"><h4><i>出</i>产出</h4>
+        <p>21 品类可查手册，把一次性经验变成组织能力；再由 AI 提炼出<b>爆品公式（备什么货）</b>与<b>内容公式（发什么拉预约）</b>。</p></div>
+    </div>
+    <figure class="shot mt22"><img src="./assets/xzhx-cat.png" alt="品类经营指南 · 数据层">
+      <figcaption>数据层 · 场次结构、价格带 GMV 结构与近 12 个月走势（量级已脱敏）</figcaption></figure>
     <div class="g2 mt18">
-      <figure class="shot"><img src="./assets/p10-mogu-s1.jpg" alt="首场战报">
-        <figcaption>首场战报 · GMV 2,617 万，蓄水用户贡献 82.3%</figcaption></figure>
-      <figure class="shot"><img src="./assets/p11-mogu-s2.jpg" alt="第二场战报">
-        <figcaption>第二场战报 · All in 单品类，GPM 提升 35%</figcaption></figure>
+      <figure class="shot"><img src="./assets/xzhx-ai-stock.png" alt="AI 备货指南">
+        <figcaption>AI 输出一 · 备货指南：命名公式拆解 + 四档备货优先级（金额已脱敏）</figcaption></figure>
+      <figure class="shot"><img src="./assets/xzhx-ai-content.png" alt="AI 创作指南">
+        <figcaption>AI 输出二 · 创作指南：高预约标题公式 + 篇数与 T-N 节奏</figcaption></figure>
+    </div>
+    <div class="insight k mt22">
+      <u>对 AI 的使用边界</u>
+      <p>提示词中明确要求：<b>数据不足以支撑结论时直接说明样本不足，不得推测</b>。上图创作指南中，AI 主动标注了"预约榜中和田玉真实样本仅 1 条，句式系从相邻高客单品类迁移得出"——<b>明确数据边界，比输出一份完整但来源存疑的结论更重要</b>。</p>
     </div>
   </div>
 
 </div></div>
 
-<!-- ==================== D2 货 ==================== -->
+<!-- ==================== D2 案例 ==================== -->
 <div class="deck" id="d2"><div class="wrap">
 
   <div class="page rv">
-    <div class="pnum">货 01</div>
+    <div class="pnum">案例 01</div>
     <div class="phead">
-      <span class="ptag">品类判断</span>
-      <h2>品类判断：<em>从体量筛选到收益验证</em></h2>
-      <p>头部账号由多品类转向单品类深耕时，品类选择失误将导致货盘、招商与内容规划整体返工。</p>
+      <span class="ptag">CASE · 概览</span>
+      <h2>数据与策略如何落地：<em>三场首播成果</em></h2>
+      <p>前面的方法与产品，最终要经得起结果检验。以下三个合作对象均为<b>首次开播或首次拓新品类</b>，无历史场次可参考，结果在相当程度上反映了前置判断的质量。</p>
     </div>
-    <div class="insight k">
-      <u>我把问题翻译成</u>
-      <p>什么样的品类，能同时满足：大盘有量、趋势向上、货源成熟，且<b>结算收益可兑现</b>？</p>
+    <div class="g3">
+      <figure class="shot"><img src="./assets/p10-mogu-s1.jpg" alt="蘑菇妈妈首播战报">
+        <figcaption>@蘑菇妈妈呀 · 财经账号首播，GMV 2,600 万+</figcaption></figure>
+      <figure class="shot"><img src="./assets/bwj-report.png" alt="包文婧珠宝首播战报">
+        <figcaption>@包文婧 · 明星珠宝首播，GMV 1,557 万+</figcaption></figure>
+      <figure class="shot"><img src="./assets/p17-ab-result.jpg" alt="薛佳凝和田玉专场战报">
+        <figcaption>@薛佳凝 · 和田玉溯源专场，GMV 1 亿+</figcaption></figure>
     </div>
-    <div class="hflow mt22">
-      <div class="hf"><u>ROUND 01</u><h5>行业三维筛选</h5><p>从体量、增速、集中度扫描候选品类，锁定方向</p></div>
-      <div class="hf"><u>ROUND 02</u><h5>结算率四维深挖</h5><p>行业 / 达人 / SKU / 商家四维交叉，验证结算收益的可兑现性</p></div>
-      <div class="hf"><u>ROUND 03</u><h5>AB 实验实证</h5><p>选取两场同量级大场作为对照，以实测数据验证</p></div>
-      <div class="hf"><u>OUTPUT</u><h5>沉淀品类资产</h5><p>把结论做成备货指南，任何人可直接取用</p></div>
+    <div class="insight mt22">
+      <u>我在其中承担的角色</u>
+      <p>我主要负责<b>前置的判断与策略</b>：用什么标准选人、货盘如何配置、内容如何规划。下面以蘑菇妈妈与薛佳凝为例，呈现"数据分析 → 策略 → 工具 → 结果"这条完整链路（包文婧一场负责协同组货盘：按明星分型定位高端珠宝与轻奢黄金，对齐目标客单与坑位价格结构）。</p>
     </div>
-    <figure class="shot mt22"><img src="./assets/chart-industry.jpg" alt="行业 DGMV 分析">
-      <figcaption>行业三维分析 · 各子品类的体量、趋势与集中度对比（体量已指数化）</figcaption></figure>
-    <div class="tb mt18"><table>
-      <tr><th>品类</th><th>近一年 DGMV</th><th>集中度</th><th>判断</th></tr>
-      <tr style="background:var(--pinkbg)"><td><b>和田玉</b></td><td><b class="hot">5.28 亿</b> · 全品类最大</td><td>60.3% 头部稳定</td><td><span class="pill a">✓ 主力押注</span></td></tr>
-      <tr><td><b>绿松石</b></td><td>增速最快，体量偏小</td><td>分散，供应链成长期</td><td><span class="pill b">可试，不宜主押</span></td></tr>
-      <tr><td><b>珍珠 / 翡翠</b></td><td>体量稳定</td><td>较集中</td><td><span class="pill c">备选</span></td></tr>
-    </table></div>
   </div>
 
   <div class="page rv">
-    <div class="pnum">货 02</div>
+    <div class="pnum">案例 02</div>
     <div class="phead">
-      <span class="ptag">关键一轮</span>
-      <h2>结算率四维拆解：<em>验证品类的真实收益能力</em></h2>
-      <p>仅观察 GMV 趋势不足以支撑判断。高客单非标品退款率普遍偏高，若结算率不达标，实际收益将显著低于成交额。</p>
+      <span class="ptag">CASE · 从 0 建联</span>
+      <h2>蘑菇妈妈：<em>用模型反推门槛，从全站锁定人选</em></h2>
+      <p>组内验证过"财经账号高客单大场可跑通"，需批量复制，但当时站内相似账号推荐功能尚未上线——只能自己建标准。</p>
     </div>
     <div class="g23">
       <div>
-        <div class="tb"><table>
-          <tr><th>验证对象</th><th>结论</th></tr>
-          <tr style="background:var(--pinkbg)"><td><b>和田玉</b></td><td>高结算 SKU 集中在 <b>500-5000 元</b>中高客单，商家多具备<b>产地直供</b>能力 → <span class="pill a">验证首选可行</span></td></tr>
-          <tr><td><b>高结算场次共性</b></td><td>话术为<b>溯源背书 + 产品故事 + 限量稀缺</b>，与账号人设契合</td></tr>
-          <tr><td><b>绿松石</b></td><td>高结算 SKU 分散，供应链成熟度不足 → <span class="pill c">印证不宜主押</span></td></tr>
-        </table></div>
-        <div class="card mt18"><h4><i>→</i>三条落地应用</h4>
-          <ul>
-            <li>结合爆品特征<b>推货盘</b></li>
-            <li>结合高结算场次提取可复用 <b>highlight 动作</b></li>
-            <li>结合高结算商家<b>探究好货来源</b></li>
-          </ul></div>
+        <div class="mods">
+          <div class="mod"><b>数据分析</b><span>用数学模型反推准入门槛：目标 GMV ÷ 客单溢价倍数 ÷ 粉丝激活率（实测 50 个头部账号约 <em>3.4%</em>）→ 硬门槛：30 天电商粉 ≥ 3 万、粉丝客单 ≥ 1000 元。</span></div>
+          <div class="mod"><b>策略</b><span>五层软性条件叠加：赛道匹配 → 内容调性 → 人设可信度 → 粉丝画像重合 → 商业化意愿；锁定 @蘑菇妈妈呀（<em>11 年基金从业背景</em>，人设与保值品类天然自洽）。</span></div>
+          <div class="mod"><b>工具</b><span>把这套判断沉淀为<em>8 维招商评分模型</em>，商家/账号可标准化打分排序——后续复用到同类赛道。</span></div>
+          <div class="mod"><b>结果</b><span>首播 GMV <em>2,617 万</em>，蓄水用户贡献 <em>82.3%</em>；All in 单品类的第二场 GPM 再 <em>+35%</em>，验证"单品类聚焦"判断。</span></div>
+        </div>
       </div>
-      <figure class="shot"><img src="./assets/p13-settle-4dim.jpg" alt="结算率四维拆解">
-        <figcaption>结算率四维拆解 · 行业 / 达人 / SKU / 商家</figcaption></figure>
+      <div>
+        <figure class="shot"><img src="./assets/p04-funnel-logic.jpg" alt="五层漏斗筛选逻辑">
+          <figcaption>五层漏斗 · 目标反推 → 画像圈层 → 双路取数输出候选池</figcaption></figure>
+        <figure class="shot mt18"><img src="./assets/p10-mogu-s1.jpg" alt="蘑菇妈妈首播战报">
+          <figcaption>首播战报 · GMV 2,617 万，蓄水贡献 82.3%</figcaption></figure>
+      </div>
     </div>
-    <div class="insight mt22">
-      <u>该轮验证的必要性</u>
-      <p>若仅以 GMV 衡量，被淘汰品类同样录得两千余万的成交额。<br><b>决定经营成立与否的，是战报之外的结算类指标。</b></p>
-    </div>
-  </div>
-
-  <div class="page rv">
-    <div class="pnum">货 04</div>
-    <div class="phead">
-      <span class="ptag">资产沉淀</span>
-      <h2>沉淀：<em>从单场选品到可复用的货盘资产</em></h2>
-      <p>单次分析仅服务于单一对象与场次。按品类沉淀为指南后，可供不同人员在不同时间直接取用。</p>
-    </div>
-    <div class="stats">
-      <div class="st"><b>104</b><i>覆盖相关主播</i></div>
-      <div class="st"><b>529</b><i>覆盖相关场次</i></div>
-      <div class="st v"><b>1000</b><i>爆款商品样本</i></div>
-      <div class="st v"><b>3</b><i>已沉淀品类</i></div>
-    </div>
-    <div class="mods mt18">
-      <div class="mod"><b>市场盘点</b><span>该品类的主播数、场次数与场次分档（专场 / 主打 / 混播）<em>→ 判断品类成熟度与竞争格局</em></span></div>
-      <div class="mod"><b>内容公式</b><span>高蓄水内容的套路分类及各套路命中率，含无效类型黑名单<em>→ 直接指导预热内容选题</em></span></div>
-      <div class="mod"><b>选品分档</b><span>按产地 / 等级的件均价带：福利品 / 入门价 / 高货价<em>→ 定货盘价格结构</em></span></div>
-      <div class="mod"><b>器型分布</b><span>手串 / 镯 / 项链 / 吊坠等款数占比<em>→ 定 SKU 结构与坡度</em></span></div>
-      <div class="mod"><b>搭配建议</b><span>DIY 配石搭子组合（金属 / 蜜蜡 / 南红等）<em>→ 拓展连带与组合款</em></span></div>
-      <div class="mod"><b>命名公式</b><span>【名人专属】+ 产地等级 + 材质拼接 + 器型规格<em>→ 商品标题可直接套用</em></span></div>
-    </div>
-    <div class="g2 mt18">
-      <figure class="shot"><img src="./assets/g-hetian-1.jpg" alt="备货指南市场盘点">
-        <figcaption>指南模块一 · 市场盘点与内容套路命中率</figcaption></figure>
-      <figure class="shot"><img src="./assets/g-hetian-2.jpg" alt="备货指南选品分档">
-        <figcaption>指南模块二 · 价格带分档 / 器型分布 / 搭配建议 / 命名公式</figcaption></figure>
-    </div>
-
-    <div class="insight k mt26">
-      <u>第三层沉淀 · 从「选品类」到「选商家」</u>
-      <p>品类确定后仍需回答：<b>该品类内哪些商家的货盘具备可撬动性</b>。<br>
-      为此搭建商家雷达看板，按主营品类扫描站内商家销售规模与达人渠道渗透率，识别规模较大但渗透不足的洼地商家。</p>
-    </div>
-    <div class="g3 mt18">
-      <div class="card"><h4><i>1</i>看什么</h4>
-        <p>各品类的商家总数、商家数渗透率、GMV 渗透率，以及单个商家的盘子规模与达人渠道占比。</p></div>
-      <div class="card"><h4><i>2</i>怎么判断</h4>
-        <p>按渗透状态分四档：<b>未合作 / 洼地 / 待深耕 / 成熟</b>。盘子大且渗透低 = 优先建联目标。</p></div>
-      <div class="card"><h4><i>3</i>用在哪</h4>
-        <p>新场次筹备时，直接按品类调出可撬动商家清单，替代逐个人工排查。</p></div>
-    </div>
-    <figure class="shot mt18"><img src="./assets/chart-radar.jpg" alt="珠宝文玩商家雷达看板">
-      <figcaption>商家雷达看板 · 按主营品类看商家盘子与达人渠道渗透，识别可撬动的货盘洼地（金额已指数化）</figcaption></figure>
-  </div>
-
-  <div class="page rv">
-    <div class="pnum">货 03</div>
-    <div class="phead">
-      <span class="ptag">案例 · 实证</span>
-      <h2>案例：<em>AB 实验对照结果</em></h2>
-      <p>前述判断框架与货盘资产需经实际经营结果检验。<br>选取两场同量级大场作为对照组，以实测数据验证品类判断。</p>
-    </div>
-    <div class="tb"><table>
-      <tr><th>指标</th><th>和田玉专场</th><th>绿松石专场</th></tr>
-      <tr><td><b>场观人数</b></td><td><b class="hot">371,678</b></td><td>265,235</td></tr>
-      <tr><td><b>支付金额</b></td><td><b class="hot">7,300 万</b></td><td>2,452 万</td></tr>
-      <tr><td><b>GPM</b></td><td><b class="hot">8,784.9</b></td><td>6,252.1</td></tr>
-      <tr><td><b>退款率</b></td><td>76.4%</td><td><b style="color:#C0392B">89%</b></td></tr>
-      <tr><td><b>最终结果</b></td><td><span class="pill a">加返场破亿 ✓</span></td><td><span class="pill c">未能放量</span></td></tr>
-    </table></div>
-    <div class="g2 mt18">
-      <figure class="shot"><img src="./assets/p17-ab-result.jpg" alt="和田玉专场战报">
-        <figcaption>和田玉专场战报 · 单场 7,300 万，加返场破亿</figcaption></figure>
-      <div class="card"><h4><i>✓</i>三轮一致</h4>
-        <p>行业趋势分析 → 结算率验证 → 实战结果，三轮数据全部指向同一结论。该品类成为长期主赛道。</p>
-        <p class="mt14"><b>这套思路可迁移到任何赛道的选品决策</b>——它本质是「先看大盘、再看质量、最后小步实证」的通用决策流程。</p></div>
-    </div>
-  </div>
-
-</div></div>
-
-<!-- ==================== D3 场 ==================== -->
-<div class="deck" id="d3"><div class="wrap">
-
-  <div class="page rv">
-    <div class="pnum">场 01</div>
-    <div class="phead">
-      <span class="ptag">量级放大</span>
-      <h2>单场目标规划：<em>结构性条件拆解</em></h2>
-      <p>品类判断解决的是「卖什么」。头部达人 <b>Winnie Tang</b> 冲击单场历史新高时，需进一步回答量级的结构支撑问题。<br>为此搭建了一套全量数据底盘。</p>
-    </div>
-    <div class="kpi">
-      <div class="k"><b>316</b><i>历史全期实收指数 · 44 个大场</i></div>
-      <div class="k"><b>86</b><i>历史单场天花板指数</i></div>
-      <div class="k"><b>109</b><i>站内对标最高场指数</i></div>
-      <div class="k"><b>+27%</b><i>距目标的差距</i></div>
-    </div>
-    <p style="margin-top:12px;font-size:13px;color:var(--ink3)">* 为对外展示需要，金额已指数化处理：以本次目标 GMV = 100 为基准</p>
     <div class="insight k mt22">
-      <u>关键判断</u>
-      <p><b>+27% 不是量级差距</b>——历史天花板已接近目标区间，差距不在量级，而在于<b>以何种结构补足这 27%</b>。</p>
+      <u>这个案例的可迁移点</u>
+      <p>模型的意义不在于找到某一个人，而在于把"什么样的账号可能跑通"<b>变成一条可复核的基准线</b>，后续任何同类赛道都能直接套用。</p>
     </div>
-    <figure class="shot mt18"><img src="./assets/chart-scene-board.jpg" alt="单场目标规划全量数据底盘">
-      <figcaption>数据底盘结构 · 四个板块递进：把自己看透 → 把对标看透 → 提炼结构差距 → 给出可执行方案</figcaption></figure>
-    <figure class="shot mt18"><img src="./assets/chart-scene.jpg" alt="目标差距定位">
-      <figcaption>目标差距定位 · 历史全量与对标场次的指数化对比，以及达成目标所需的三个结构条件</figcaption></figure>
   </div>
 
   <div class="page rv">
-    <div class="pnum">场 02</div>
+    <div class="pnum">案例 03</div>
     <div class="phead">
-      <span class="ptag">结构拆解</span>
-      <h2>结构拆解：<em>六项发现与核心杠杆</em></h2>
-      <p>基于历史全量场次与站内对标场次数据，反推目标达成所需的货盘结构、蓄水规模与坑产分布。</p>
+      <span class="ptag">CASE · 拓新品类</span>
+      <h2>薛佳凝：<em>先验证再放量，用结算率筛出主赛道</em></h2>
+      <p>头部账号从多品类转向单品类深耕，品类选错将导致货盘、招商、内容整体返工。核心问题：什么品类能同时满足大盘有量、趋势向上、<b>且结算收益可兑现</b>。</p>
     </div>
-    <div class="tb"><table>
-      <tr><th>分析维度</th><th>关键发现</th></tr>
-      <tr><td><b>大场脉冲模型</b></td><td>44 个大场中 <b>18 个中大场贡献 94%</b>，小场对大盘几乎无贡献 → 资源应集中于大场</td></tr>
-      <tr><td><b>客单价是核心变量</b></td><td>最高场客单与支付人数双高；低产出场客单低约 40%、人数不足其 1/10</td></tr>
-      <tr style="background:var(--pinkbg)"><td><b>可复制货盘结构</b></td><td>所有高产出大场均为「玉石 40~49% + 黄金彩宝 30~38% + 定制 12~20%」<b>三段式配比</b></td></tr>
-      <tr><td><b>坑产结构</b></td><td>天花板场中 <b>35 个百万级 SKU 贡献 40.5%</b>，280 个十万级 SKU 贡献 87.8% → 头部 SKU 决定量级</td></tr>
-      <tr style="background:var(--ppbg)"><td><b>蓄水是最直接杠杆</b></td><td>蓄水人数与 GMV 强正相关，单人产出均值约 <b>3,000 元</b>；该账号蓄水→购买转化在对标中最优</td></tr>
-      <tr><td><b>筹备周期</b></td><td>月度呈脉冲，大场之间需 <b>4~6 周</b>货盘筹备周期</td></tr>
-    </table></div>
-    <figure class="shot mt18"><img src="./assets/winnie-insight.jpg" alt="蓄水盘洞察结论">
-      <figcaption>蓄水盘洞察 · 蓄水规模与 GMV 强正相关，单人产出反映货盘承接力</figcaption></figure>
-    <div class="insight mt22">
-      <u>规划结论</u>
-      <p>目标达成不是靠单点发力，而是<b>三段式货盘结构 × 蓄水规模 × 头部坑产密度</b>三者同时到位。<br>
-      其中<b>蓄水盘是最可控的杠杆</b>——转化效率已被验证为最优，蓄水人数提升可带动 GMV 同比例增长。</p>
+    <div class="g23">
+      <div>
+        <div class="mods">
+          <div class="mod"><b>数据分析</b><span>行业三维筛选（体量 / 增速 / 集中度）锁定和田玉方向；再做<em>结算率四维拆解</em>（行业 / 达人 / SKU / 商家）——高客单非标品退款率高，仅看 GMV 会误判。</span></div>
+          <div class="mod"><b>策略</b><span>AB 实测替代主观判断：和田玉专场与绿松石专场同量级对照，<em>退款率 76.4% vs 89%</em>，结算收益差距远大于成交额差距。</span></div>
+          <div class="mod"><b>工具</b><span>把结论沉淀成<em>品类备货指南</em>（价格带分档 / 器型结构 / 命名公式），指导选品与预热——即「先知后行」品类指南的原型。</span></div>
+          <div class="mod"><b>结果</b><span>和田玉专场 GMV <em>1 亿+</em>（加返场）；行业趋势、结算率、实战结果三轮数据一致，该品类成为长期主赛道。</span></div>
+        </div>
+      </div>
+      <div>
+        <figure class="shot"><img src="./assets/chart-industry.jpg" alt="行业三维分析">
+          <figcaption>行业三维 · 体量 / 趋势 / 集中度对比（体量已指数化）</figcaption></figure>
+        <figure class="shot mt18"><img src="./assets/p17-ab-result.jpg" alt="和田玉专场战报">
+          <figcaption>和田玉专场战报 · 加返场破亿</figcaption></figure>
+      </div>
+    </div>
+    <div class="insight k mt22">
+      <u>这个案例的可迁移点</u>
+      <p>它本质是一套"<b>先看大盘、再看质量、最后小步实证</b>"的通用选品决策流程——可迁移到任何赛道，也是我把方法沉淀成产品的直接来源。</p>
+    </div>
+  </div>
+
+  <div class="page rv">
+    <div class="pnum">案例 04</div>
+    <div class="phead">
+      <span class="ptag">CASE · 品类指南落地</span>
+      <h2>蘑菇妈妈 · 沉香溯源专场：<em>从完全不懂到文玩珠宝榜 TOP1</em></h2>
+      <p>存量买手拓一个全新品类，买手与运营都不了解沉香。这一场是「先知后行」品类指南的真实落地场景，也是我把方法沉淀成产品后反向验证的一次实战。</p>
+    </div>
+    <div class="g23">
+      <div>
+        <div class="mods">
+          <div class="mod"><b>数据分析</b><span>用品类指南做备货：从站内真实场次识别高价值<em>产地/材质</em>、价格带分档与爆品命名公式，解决“不懂这个品类”的冷启动问题。</span></div>
+          <div class="mod"><b>策略</b><span>预热采用<em>科普鉴别 + 溯源</em>内容公式拉预约——沉香假货多，“教育型”内容才能消除“喜欢却不敢买”的心理门槛。</span></div>
+          <div class="mod"><b>工具</b><span>产出<em>沉香专场备货 & 内容参考指南</em>（即「先知后行」品类指南的实体产出），直接指导选品与预热。</span></div>
+          <div class="mod"><b>结果</b><span>双场 GMV <em>1,580 万+</em>，客单 <em>9,780 元</em>；预约用户仅占 4.1% 观播量却贡献 <em>57% GMV</em>，种收笔记 ROI <em>104.8</em>，登文玩珠宝榜 TOP1。</span></div>
+        </div>
+      </div>
+      <div>
+        <figure class="shot"><img src="./assets/g-chenxiang-1.jpg" alt="沉香专场备货与内容指南">
+          <figcaption>品类指南 · 沉香专场备货 & 笔记创作参考（公网检索 + 站内数据交叉验证）</figcaption></figure>
+        <figure class="shot mt18"><img src="./assets/xzhx-chenxiang-result.png" alt="沉香溯源专场结果">
+          <figcaption>双场结果 · GMV 1,580 万+ · 客单 9,780 · 预约贡献 57%</figcaption></figure>
+      </div>
+    </div>
+    <div class="insight k mt22">
+      <u>与「先知后行」的闭环</u>
+      <p>品类指南当初给出的价格带、产地结构与内容方向，与最终 <b>130 个 SKU 的真实成交逐条对账（含未命中的部分）</b>。这也是「先知后行」实证模块的原型——预测偏差本身即下一版知识层的输入。</p>
     </div>
   </div>
 
 </div></div>
 
-<!-- ==================== D4 工具 ==================== -->
-<div class="deck" id="d4"><div class="wrap">
+<!-- ==================== D3 工具 ==================== -->
+<div class="deck" id="d3"><div class="wrap">
 
   <div class="page rv">
     <div class="pnum">工具 01</div>
     <div class="phead">
-      <span class="ptag">AI 观点</span>
-      <h2>AI 应用路径：<em>从单次任务到数据产品</em></h2>
-      <p>AI 用于单次任务的效率提升有限。以下梳理将其嵌入工作流的四层递进路径。</p>
+      <span class="ptag">总述 · 工具化路径</span>
+      <h2>从单次任务到数据产品：<em>8 个自建工具</em></h2>
+      <p>把判断固化为组织能力，有四层递进路径。「先知后行」是这条路径的终点——在此之前，我已在日常岗位上主导设计并仍在使用下列工具。</p>
     </div>
     <div class="lad">
       <div class="lv lv1"><div class="lvn"><u>LEVEL</u><b>1</b></div>
         <div class="lvc"><h4>用 AI 完成单次任务</h4><p>方案初稿、场次复盘、数据分析 —— 效率提升有限，且不可复用</p></div></div>
       <div class="lv lv2"><div class="lvn"><u>LEVEL</u><b>2</b></div>
-        <div class="lvc"><h4>把重复流程封装成 Skill</h4><p>打通多系统接口，输入 ID 自动生成方案数据框架，效率提升由个人扩展至团队</p></div></div>
+        <div class="lvc"><h4>把重复流程封装成 Skill</h4><p>打通多系统接口，输入 ID 自动生成方案数据框架，效率由个人扩展至团队</p></div></div>
       <div class="lv lv3"><div class="lvn"><u>LEVEL</u><b>3</b></div>
-        <div class="lvc"><h4>做成产品化工具</h4><p>运营工作台 + PRD / SOP —— 以产品视角明确使用对象、使用场景与使用意愿</p></div></div>
+        <div class="lvc"><h4>做成产品化工具</h4><p>运营工作台 + PRD / SOP —— 以产品视角明确使用对象、场景与意愿</p></div></div>
       <div class="lv lv4"><div class="lvn"><u>LEVEL</u><b>4</b></div>
-        <div class="lvc"><h4>做成可对外交付的数据产品</h4><p>邀约 brief / 人群洞察 / 商家雷达 / 内容参考池 / 站外匹配 / 品类指南 —— 工具成为业务沟通的界面</p></div></div>
+        <div class="lvc"><h4>做成可对外交付的数据产品</h4><p>多个看板收敛为一个完整应用「先知后行」，成为业务沟通的界面</p></div></div>
     </div>
-    <div class="insight k mt22">
-      <u>应用边界</u>
-      <p><b>不是所有环节都该交给 AI</b>。需要业务判断的部分留给人，机械查数和格式化输出交给 AI。<br>
-      工具的作用在于压缩重复性投入，将时间集中于需要判断的环节。</p>
-    </div>
+    <div class="tb mt22"><table>
+      <tr><th>工具 / 看板</th><th>解决什么判断</th><th>归属</th></tr>
+      <tr><td><b>邀约 brief 看板</b></td><td>这个账号值不值得建联？怎么打动他？</td><td><span class="pill a">人</span></td></tr>
+      <tr><td><b>站外榜单匹配看板</b></td><td>站外供给有多少能撬动？怎么触达？</td><td><span class="pill a">人</span></td></tr>
+      <tr><td><b>方案生成 Skill</b></td><td>输入 ID 自动出结构化方案框架</td><td><span class="pill a">人</span></td></tr>
+      <tr><td><b>人群洞察看板</b></td><td>这个账号的粉丝到底买什么？推什么货？</td><td><span class="pill b">货</span></td></tr>
+      <tr><td><b>商家雷达看板</b></td><td>哪些商家货盘可撬动？优先建联谁？</td><td><span class="pill b">货</span></td></tr>
+      <tr><td><b>高蓄水内容参考池</b></td><td>预热内容怎么写才有转化？</td><td><span class="pill b">货</span></td></tr>
+      <tr><td><b>品类备货指南</b></td><td>进入新品类，备什么货、定什么价？</td><td><span class="pill b">货</span></td></tr>
+      <tr><td><b>运营工作台</b></td><td>200+ 对象的日常管理与投流决策</td><td><span class="pill a">人</span> <span class="pill b">场</span></td></tr>
+    </table></div>
   </div>
 
   <div class="page rv">
     <div class="pnum">工具 02</div>
     <div class="phead">
-      <span class="ptag">对外交付</span>
-      <h2>邀约 brief 看板：<em>把建联沟通标准化</em></h2>
-      <p>触达新供给时需人工整理平台价值、行业数据与账号分析，流程重复且质量依赖个人经验。该看板支持输入 ID 自动生成可直接发送的 brief。</p>
+      <span class="ptag">工具截图墙</span>
+      <h2>人侧 / 货侧工具：<em>每一个对应一个真实卡点</em></h2>
+      <p>下列工具均由本人独立完成需求定义、数据口径设计与搭建，并配套文档交付团队使用。</p>
     </div>
-    <div class="mods">
-      <div class="mod"><b>① 平台价值论证</b><span>目标品类的客单区间、赛道增速、老客复购与蓄水机制价值<em>→ 回答「为什么值得来」</em></span></div>
-      <div class="mod"><b>② 赛道战报墙</b><span>同赛道已验证的破亿案例与成绩<em>→ 建立可信度，降低对方决策顾虑</em></span></div>
-      <div class="mod"><b>③ 账号数据快照</b><span>粉丝量、电商粉、客单价、动销层级、潜力电商规模<em>→ 判断这个账号值不值得投入</em></span></div>
-      <div class="mod"><b>④ 粉丝消费类目分布</b><span>粉丝在站内 27 个行业的消费占比与 TOP6 集中度<em>→ 判断给他推什么货能卖动</em></span></div>
-      <div class="mod"><b>⑤ 粉丝消费品牌 TOP</b><span>粉丝已识别的 6,836 个品牌与 TOP20 集中度<em>→ 反推可撬动的品牌与货盘调性</em></span></div>
-      <div class="mod"><b>⑥ 粉丝跨直播间消费</b><span>粉丝在其他主播直播间的成交分布与集中度<em>→ 判断粉丝的高客单消费习惯是否已被验证</em></span></div>
-      <div class="mod"><b>⑦ 商单收入参考</b><span>近期商业合作报价与收入区间<em>→ 谈判时预判对方的收益预期</em></span></div>
+    <div class="g3">
+      <figure class="shot"><img src="./assets/invite_1.jpg" alt="邀约 brief 看板">
+        <figcaption>邀约 brief 看板 · 账号快照与平台价值</figcaption></figure>
+      <figure class="shot"><img src="./assets/dy-board.jpg" alt="站外榜单匹配看板">
+        <figcaption>站外榜单匹配 · 站外→站内匹配→触达通道（名单已脱敏）</figcaption></figure>
+      <figure class="shot"><img src="./assets/fans_1.jpg" alt="人群洞察看板">
+        <figcaption>人群洞察 · 策略人群消费结构与类目分布（金额已量级化）</figcaption></figure>
+      <figure class="shot"><img src="./assets/radar_1.jpg" alt="商家雷达看板">
+        <figcaption>商家雷达 · 分品类商家盘子与渠道渗透（金额已指数化）</figcaption></figure>
+      <figure class="shot"><img src="./assets/yugao_1.jpg" alt="高蓄水内容参考池">
+        <figcaption>高蓄水内容参考池 · 四维度每日自动更新</figcaption></figure>
+      <figure class="shot"><img src="./assets/p19-wb-overview.jpg" alt="运营工作台">
+        <figcaption>运营工作台 · 实时 KPI 与排期投流（书签注入 CRM 交付）</figcaption></figure>
     </div>
-    <div class="g2 mt18">
-      <figure class="shot"><img src="./assets/invite-board.jpg" alt="邀约brief看板首屏">
-        <figcaption>首屏 · 平台价值论证 + 赛道战报墙</figcaption></figure>
-      <figure class="shot"><img src="./assets/inv-fans.jpg" alt="粉丝消费类目与品牌">
-        <figcaption>粉丝消费类目分布 + 站内消费品牌 TOP20</figcaption></figure>
+    <div class="insight k mt22">
+      <u>从工具到产品</u>
+      <p>单个工具容易被理解为一次性展示型产出。更有价值的是<b>能在真实岗位上持续识别卡点、并逐个转化为可复用方案</b>——「先知后行」正是把这些分散的单点工具，收敛成一条从诊断到执行的完整链路。</p>
     </div>
-    <figure class="shot mt18"><img src="./assets/inv-crossbuy.jpg" alt="粉丝在其他直播间消费">
-      <figcaption>粉丝跨直播间消费 TOP · 判断该账号粉丝的高客单成交习惯是否已被验证</figcaption></figure>
-    <div class="insight mt22">
-      <u>产出价值</u>
-      <p>两个提效：<b>判断提效</b>——看数据即可判断潜力，不必先建联再评估；<b>沟通提效</b>——一份看板讲清平台价值、账号现状与货盘建议，可独立交付，接手方无需额外说明。</p>
-    </div>
-  </div>
-
-  <div class="page rv">
-    <div class="pnum">工具 03</div>
-    <div class="phead">
-      <span class="ptag">产品化</span>
-      <h2>运营工作台：<em>以产品视角重构日常流程</em></h2>
-      <p>日常需在多个内部系统间反复切换，200+ 合作对象的排期、投流与内容数据分散存储。</p>
-    </div>
-    <div class="g23">
-      <div>
-        <div class="card"><h4><i>?</i>我的思考路径</h4>
-          <p>以产品经理视角问自己三个问题：<b>要解决哪几个核心痛点？每个功能的最小可用形态是什么？怎么和现有系统打通？</b></p>
-          <p class="mt14">最终以<b>书签注入 CRM</b> 形式交付，不需额外部署，打开 CRM 即可使用。</p></div>
-        <div class="mods mt18">
-          <div class="mod"><b>概览</b><span>目标 DGMV / 达成 / 完成率 / 总场次实时 KPI</span></div>
-          <div class="mod"><b>排期管理</b><span>200+ 对象实时拉取，<em>支持一键投流并监控记录</em></span></div>
-          <div class="mod"><b>内容监控</b><span>预热内容 UV / DGMV，一键跳转投流</span></div>
-          <div class="mod"><b>业绩进度</b><span>业绩达成概览与缺口预警</span></div>
-        </div>
-      </div>
-      <figure class="shot"><img src="./assets/p19-wb-overview.jpg" alt="工作台概览页">
-        <figcaption>概览页 · 实时 KPI 与 Top 榜单</figcaption></figure>
-    </div>
-    <div class="g2 mt18">
-      <figure class="shot"><img src="./assets/p20-wb-schedule.jpg" alt="排期管理页">
-        <figcaption>排期管理 · 实时拉取，支持一键投流</figcaption></figure>
-      <figure class="shot"><img src="./assets/p22-wb-note.jpg" alt="内容监控页">
-        <figcaption>内容监控 · 预热内容数据与投流入口</figcaption></figure>
-    </div>
-    <div class="insight mt22">
-      <u>交付物</u>
-      <p>经多轮提需 → 测试 → 迭代，输出完整 <b>PRD + 上手 SOP</b>，全组可自主部署，后迁移至公司内部数据产品平台。</p>
-    </div>
-  </div>
-
-  <div class="page rv">
-    <div class="pnum">工具 04</div>
-    <div class="phead">
-      <span class="ptag">自建全景</span>
-      <h2>工具全景：<em>8 个自建工具与看板</em></h2>
-      <p>下列工具与看板均由本人独立完成需求定义、数据口径设计、搭建与迭代，并配套文档交付团队使用。<br>各工具分别对应「人 / 货 / 场」中的具体决策场景。</p>
-    </div>
-    <div class="tb"><table>
-      <tr><th>工具 / 看板</th><th>能看到什么数据</th><th>解决什么判断</th><th>归属</th></tr>
-      <tr><td><b>方案生成 Skill</b></td><td>账号数据、粉丝画像、对标场次、蓄水内容</td><td>方案数据准备：输入 ID 自动出结构化框架</td><td><span class="pill a">人</span></td></tr>
-      <tr><td><b>运营工作台</b></td><td>排期 / 投流 / 内容 / 业绩四类实时数据</td><td>200+ 对象的日常管理与投流决策</td><td><span class="pill a">人</span> <span class="pill b">场</span></td></tr>
-      <tr><td><b>邀约 brief 看板</b></td><td>平台价值、战报、账号快照、粉丝消费全景</td><td>这个账号值不值得建联？怎么打动他？</td><td><span class="pill a">人</span></td></tr>
-      <tr><td><b>站外榜单匹配看板</b></td><td>站外榜单、站内匹配、归属状态、触达通道</td><td>站外供给有多少能撬动？怎么触达？</td><td><span class="pill a">人</span></td></tr>
-      <tr><td><b>人群洞察看板</b></td><td>十大策略人群消费、类目分布、订单抽样、偏好品牌</td><td>这个账号的粉丝到底买什么？推什么货？</td><td><span class="pill b">货</span></td></tr>
-      <tr><td><b>高蓄水内容参考池</b></td><td>全站近 365 天高蓄水内容，四维度每日更新</td><td>预热内容怎么写才有转化？</td><td><span class="pill b">货</span> <span class="pill b">场</span></td></tr>
-      <tr><td><b>品类备货指南</b></td><td>市场盘点、内容公式、选品分档、命名公式</td><td>进入一个新品类，备什么货、定什么价？</td><td><span class="pill b">货</span></td></tr>
-      <tr style="background:var(--pinkbg)"><td><b>商家雷达看板</b></td><td>分品类商家盘子、达人渠道渗透率、渗透状态分档</td><td>这个品类里哪些商家货盘可撬动？优先建联谁？</td><td><span class="pill b">货</span></td></tr>
-    </table></div>
-    <div class="g2 mt18">
-      <figure class="shot"><img src="./assets/fans-gmv.jpg" alt="人群洞察看板">
-        <figcaption>人群洞察 · 人数占比 vs GMV 占比 vs 消费指数（金额已量级化处理）</figcaption></figure>
-      <figure class="shot"><img src="./assets/yugao-pool.jpg" alt="高转化内容参考池">
-        <figcaption>内容参考池 · 全站近 365 天高蓄水内容，四维度每日自动更新</figcaption></figure>
-    </div>
-    <figure class="shot mt18"><img src="./assets/chart-radar.jpg" alt="商家雷达看板">
-      <figcaption>商家雷达看板 · 分品类扫描商家盘子与渠道渗透，识别可撬动货盘（金额已指数化）</figcaption></figure>
-    <p style="margin-top:18px;font-size:13px;color:var(--ink3)">* 部分内部数据已脱敏处理</p>
   </div>
 
 </div></div>
 
-<!-- ==================== D5 认知 ==================== -->
-<div class="deck" id="d5"><div class="wrap">
+<!-- ==================== D4 关于我 ==================== -->
+<div class="deck" id="d4"><div class="wrap">
 
   <div class="page rv">
-    <div class="pnum">认知 01</div>
+    <div class="pnum">关于我 01</div>
     <div class="phead">
-      <span class="ptag">行业认知</span>
-      <h2>对内容电商的<em>三点认知</em></h2>
-      <p>以下为实习期间形成的三点行业判断，相较具体数据结果更具长期参考价值。</p>
-    </div>
-    <div class="g3">
-      <div class="card"><h4><i>1</i>人设与品类自洽，货才带得动</h4>
-        <p>高客单非标品的成交<b>本质是信任转移</b>。用户不会因陌生人的推荐完成万元级商品的购买决策。</p>
-        <p class="mt14">成交发生在<b>人设与品类逻辑自洽</b>的那一刻。财经背景推保值资产能成，是因为叙事成立。</p>
-        <p class="mt14">因此在选择合作对象时，会锁定<b>特定画像</b>的账号，并对其粉丝人群、消费品类与品牌偏好做前置洞察——人群洞察看板即为此设计。</p></div>
-      <div class="card"><h4><i>2</i>沟通要把对方最关心的前置</h4>
-        <p>无论是撰写邀约 brief 还是直接建联，<b>均需前置判断对方的核心关注点</b>。</p>
-        <p class="mt14"><b>不同层级的诉求完全不同</b>：中小创作者更关注收入确定性；明星艺人更关注平台宣发、市场声量与资源扶持。</p>
-        <p class="mt14">因此在撰写 brief 时，会按对象类型<b>调整信息优先级</b>，以对方关注点组织内容结构，而非罗列平台侧信息。</p></div>
-      <div class="card"><h4><i>3</i>快速迭代的行业中，方法论比单点经验更具复用价值</h4>
-        <p>互联网电商迭代周期短，<b>具体打法的有效期有限</b>，而沉淀方法论的能力具备长期价值。</p>
-        <p class="mt14">三件事最重要：<b>方法论沉淀</b>、<b>工具可复用</b>、<b>优秀案例对标与复盘</b>。</p>
-        <p class="mt14">应以策略批量解决同类问题，而非逐个应对。后者效率低，且问题会持续复现。</p></div>
-    </div>
-    <div class="insight mt22">
-      <u>认知的可迁移性</u>
-      <p>更换平台或品类后，上述三条判断依然适用——<b>其描述的是高客单商品在内容场域完成交易的底层规律</b>，以及在快速变化环境中积累经验复利的工作方式。</p>
-    </div>
-  </div>
-
-  <div class="page rv">
-    <div class="pnum">认知 02</div>
-    <div class="phead">
-      <span class="ptag">视角对照</span>
+      <span class="ptag">PERSPECTIVE</span>
       <h2>两种视角：<em>中台定规则，一线做判断</em></h2>
-      <p>Shopee 为策略中台视角，小红书为业务一线视角。两者的差异构成了对策略落地方式的完整认知。</p>
+      <p>Shopee 是策略中台视角，小红书是业务一线视角。两段经历构成了我对"策略如何落地"的完整认知。</p>
     </div>
     <div class="vs">
       <div class="vc a"><h5>Shopee · 跨境策略中台</h5>
-        <p><b>视角</b>：给一个区域的卖家群体设计规则</p>
-        <p class="mt14"><b>核心工作</b>：从 0 搭建 FY26 卖家增长预测模型——建立 5 类卖家标签体系，按成长阶段与品类特征分层，输出年度增长预测。</p>
-        <div class="stats mt14">
-          <div class="st"><b>7.2%</b><i>模型预测偏差</i></div>
-          <div class="st"><b>23%→58%</b><i>站点扩张报名率</i></div>
-        </div>
-        <p class="mt14">模型成为区域团队制定目标与分配资源的依据。</p></div>
+        <p><b>视角</b>：给一个区域的卖家群体设计规则。<br><br>
+        <b>核心工作</b>：从 0 搭建 FY26 卖家增长预测模型——建立 5 类卖家标签体系，按成长阶段与品类特征分层，输出年度增长预测。<br><br>
+        <b>结果</b>：模型预测偏差 <b>7.2%</b>，站点扩张报名率 <b>23% → 58%</b>，成为区域团队制定目标与分配资源的依据。</p></div>
       <div class="vsx">VS</div>
       <div class="vc b"><h5>小红书 · 电商供给一线</h5>
-        <p><b>视角</b>：给具体的人和货做判断</p>
-        <p class="mt14"><b>核心工作</b>：为单个账号建立准入标尺、匹配货盘、规划场次结构，并把判断沉淀成全组可用的工具。</p>
-        <div class="stats mt14">
-          <div class="st v"><b>30+</b><i>主导直播全案</i></div>
-          <div class="st v"><b>8 个</b><i>产品化工具</i></div>
-        </div>
-        <p class="mt14">判断必须在具体场景中被验证，否则只是纸面推演。</p></div>
+        <p><b>视角</b>：给具体的人和货做判断。<br><br>
+        <b>核心工作</b>：为账号建立准入标尺、匹配货盘、规划场次结构，并把判断沉淀成全组可用的工具与产品。<br><br>
+        <b>结果</b>：<b>8 个产品化工具</b> + 一个端到端 AI 决策产品；判断在具体场景中被真实结果验证。</p></div>
     </div>
-    <div class="insight k mt22">
-      <u>两种视角的互补性</u>
-      <p>中台视角提供的是<b>用分层与模型处理规模化问题</b>的方法；一线视角提供的是<b>策略需落地方能产生价值、而落地需依托工具承载</b>的认知。<br>
-      因此在形成判断时，会同步评估其工具化的可行性。</p>
+    <div class="insight mt22">
+      <u>两种视角的互补</u>
+      <p>中台提供的是"用分层与模型处理规模化问题"的方法；一线提供的是"策略需落地方能产生价值、而落地需依托工具承载"的认知。<b>因此我在形成判断时，会同步评估它工具化的可行性</b>——这正是策略中台岗位需要的思维方式。</p>
     </div>
   </div>
 
   <div class="page rv">
-    <div class="pnum">认知 03</div>
+    <div class="pnum">关于我 02</div>
     <div class="phead">
       <span class="ptag">ABOUT ME</span>
-      <h2>关于我<em>与下一步规划</em></h2>
+      <h2>三点认知<em>与下一步</em></h2>
     </div>
-    <div class="closing">
+    <div class="g3">
+      <div class="card"><h4><i>1</i>人设与品类自洽，货才带得动</h4>
+        <p>高客单非标品的成交本质是<b>信任转移</b>。因此选择合作对象时会锁定特定画像，并对其粉丝人群、消费品类做前置洞察。</p></div>
+      <div class="card"><h4><i>2</i>沟通要把对方最关心的前置</h4>
+        <p>不同层级诉求不同：中小创作者关注收入确定性，明星艺人关注平台宣发与资源扶持。按对象类型<b>调整信息优先级</b>，而非罗列平台信息。</p></div>
+      <div class="card"><h4><i>3</i>方法论比单点经验更具复用价值</h4>
+        <p>互联网电商迭代快，具体打法有效期有限，而沉淀方法论的能力具备长期价值。应以策略<b>批量解决同类问题</b>，而非逐个应对。</p></div>
+    </div>
+    <div class="closing mt22">
       <p>从金融转向互联网，跨进一个全新品类时我对这个行业几乎一无所知——<br>
-      但我可以<b>用数据快速建立对一个行业的认知框架，把「感觉」换成「依据」</b>。</p>
-      <p class="gold">数据给了我看清问题的眼睛，但真正让我想继续走下去的，<br>
-      是每一次「我猜是这样」被数据验证的瞬间，和每一次验证失败后重新建立假设的过程。</p>
-    </div>
-    <div class="g3 mt22">
-      <div class="card"><h4><i>1</i>继续做判断标尺</h4>
-        <p>把数据驱动决策的方法论沉淀得更完整，让判断可复核、可复用。</p></div>
-      <div class="card"><h4><i>2</i>把 AI 用得更深</h4>
-        <p>从「执行工具」变成真正的工作搭子，学会精准提需与迭代结果。</p></div>
-      <div class="card"><h4><i>3</i>把方法迁移到更大的商业场景</h4>
-        <p>目前验证过的是单一品类的供给经营。下一步希望在更完整的电商与商业化链路中检验这套方法——<b>用户增长、货品策略、广告投放效率</b>，都是同一套「建标尺、做验证、沉淀复用」的逻辑。</p></div>
-    </div>
-    <div class="contact mt22">
-      <a class="cc" href="mailto:hnaywx2023@163.com"><u>EMAIL</u><b>hnaywx2023@163.com</b></a>
-      <a class="cc" href="tel:18237226962"><u>PHONE</u><b>182 3722 6962</b></a>
-      <div class="cc"><u>EDUCATION</u><b>复旦大学 · 金融硕士 · 27 届</b></div>
-      <div class="cc"><u>LOCATION</u><b>上海</b></div>
+      但我可以<b>用数据快速建立对一个行业的认知框架，把"感觉"换成"依据"</b>。</p>
+      <p class="gold">下一步：把这套"建标尺、做验证、沉淀复用"的方法，迁移到更完整的商业链路——用户增长、货品策略、广告投放效率，都是同一套逻辑。</p>
+      <div class="contact mt22">
+        <a class="cc" href="mailto:hnaywx2023@163.com"><u>EMAIL</u><b>hnaywx2023@163.com</b></a>
+        <div class="cc"><u>PHONE</u><b>182 3722 6962</b></div>
+        <div class="cc"><u>EDUCATION</u><b>复旦大学 · 金融硕士 · 27 届</b></div>
+        <div class="cc"><u>LOCATION</u><b>上海</b></div>
+      </div>
     </div>
   </div>
 
